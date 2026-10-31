@@ -82,11 +82,15 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .day>span:last-child{text-align:right}
 .fh{cursor:pointer;-webkit-user-select:none;user-select:none}
 @media (max-width:430px){.nav #vw{order:-1;flex:1 0 100%}#dbb button{padding:6px 6px;font-size:15px;white-space:nowrap}.day{padding:2px}.day .e,.day .i{font-size:10.5px;letter-spacing:-.2px}.nsm b{font-size:14px}.nsm .big b{font-size:21px}}
+input[type=date],input[type=month]{-webkit-appearance:none;appearance:none;display:block;width:100%;min-width:0;max-width:100%;min-height:38px;line-height:1.2;text-align:left}
+input[type=date]::-webkit-date-and-time-value,input[type=month]::-webkit-date-and-time-value{text-align:left;min-width:0}
+.g2>div,#rdw,#ddw>*{min-width:0}
 </style>
 </head>
 <body>
 <div id="bar"><div class="seg" id="tabs"><button data-m="rc" class="on">レシート</button><button data-m="db">口座</button><button data-m="all">合計</button></div>
-<div class="nav" id="nav"><div class="seg" id="vw"><button data-v="m" class="on">月</button><button data-v="y">年</button></div><button id="pv">◀</button><div id="ymw" style="flex:1;text-align:center"><select id="ysel" style="width:auto;font-weight:700;font-size:15px"></select> <select id="msel" style="width:auto;font-weight:700;font-size:15px"></select><span class="mu" id="yr" style="font-size:12px"></span></div><button id="nx">▶</button><button id="td">今日</button></div></div>
+<div class="nav" id="nav"><div class="seg" id="vw"><button data-v="m" class="on">月</button><button data-v="y">年</button></div><button id="pv">◀</button><div id="ymw" style="flex:1;text-align:center"><select id="ysel" style="width:auto;font-weight:700;font-size:15px"></select> <select id="msel" style="width:auto;font-weight:700;font-size:15px"></select></div><button id="nx">▶</button><button id="td">今日</button></div></div>
+<div class="mu" id="yr" style="font-size:13px;margin:2px 2px 6px;display:none"></div>
 <div class="card bal" id="balc"><span class="mu" id="bl" style="white-space:nowrap">現金の残高</span><b id="bal">¥0</b><span class="mu" id="bd"></span><button id="opn">残高を設定</button></div>
 <div id="dbb" style="display:none;gap:8px;margin:8px 0"><button class="p" id="addd" style="flex:1">＋口座の記録を追加</button><button id="imp" style="flex:1">カード明細を取り込む</button></div>
 <div class="cal" id="cal"></div>
@@ -117,7 +121,10 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 <div id="rc"><div id="camrow" style="display:flex;gap:6px;margin-bottom:6px"><button class="p" id="cam" style="flex:1">📷 撮影して読み取る</button><button id="pic" style="flex:1">🖼 写真から選ぶ(複数可)</button></div>
 <button id="more" style="display:none;width:100%;margin-bottom:6px">＋ レシートの続きを追加で読み取る</button>
 <button id="txb" style="width:100%;margin-bottom:6px">📋 コピーした文字から入力</button>
-<div id="txw" style="display:none;margin-bottom:6px"><div class="mu" style="font-size:12px;margin-bottom:4px">写真アプリでレシートの写真を開き、文字を長押し →「すべてを選択」→「コピー」。ここに貼り付けて「反映する」を押します</div><textarea id="txa" rows="6" style="width:100%;background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:8px;font-size:16px"></textarea><button class="p" id="txg" style="width:100%;margin-top:4px">品目に反映する</button></div>
+<div id="txw" style="display:none;margin-bottom:6px"><div class="mu" style="font-size:12px;margin-bottom:4px">①「撮影して表示」か「写真から選ぶ」で写真を出し、文字を長押し →「すべてを選択」→「コピー」。②または下の欄を長押し →「テキストをスキャン」(iOS 15以降)でカメラから直接入れます。どちらも、貼り付けたら「反映する」を押します</div><div style="display:flex;gap:6px;margin-bottom:6px"><button id="cpc" style="flex:1">📷 撮影して表示</button><button id="cpp" style="flex:1">🖼 写真から選ぶ</button></div>
+<div id="cpw" style="display:none;margin-bottom:6px"><img id="cpi" alt="" style="width:100%;max-height:55vh;object-fit:contain;border-radius:8px;border:1px solid var(--bd);-webkit-user-select:auto;user-select:auto"><div class="mu" style="font-size:12px;margin:4px 0">写真の文字を長押し →「すべてを選択」→「コピー」。そのあと下の欄に貼り付けます</div><button id="cpx" style="width:100%;margin-bottom:6px">写真を閉じる</button></div>
+<input type="file" id="cpf" accept="image/*" capture="environment" hidden><input type="file" id="cpl" accept="image/*" hidden>
+<textarea id="txa" rows="6" style="width:100%;background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:8px;font-size:16px"></textarea><button class="p" id="txg" style="width:100%;margin-top:4px">品目に反映する</button></div>
 <input type="file" id="fl" accept="image/*" capture="environment" hidden><input type="file" id="fl2" accept="image/*" multiple hidden></div>
 <div class="note" id="nt"></div>
 <div class="g2" id="sp"><div><span class="mu" id="sl">店名・メモ</span><div style="display:flex;gap:4px"><input id="sh" autocomplete="off" placeholder="入力 or ▾で履歴から"><button id="shb" type="button" style="padding:2px 10px">▾</button></div></div><div id="pmw"><span class="mu">支払方法</span><select id="pm"><option value="cash">現金</option><option value="other">カード(残高に影響なし)</option><option value="etc">他(残高に影響なし)</option></select></div></div>
@@ -176,6 +183,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 <input type="file" id="imf" accept=".json,application/json" style="margin:4px 0 10px">
 <div class="mu">またはテキスト</div>
 <textarea id="imt" rows="6" placeholder="ここに貼り付け" style="margin:4px 0 8px;width:100%;background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:8px;font:inherit;font-size:16px"></textarea>
+<label style="display:block;font-size:13px;margin:6px 0"><input type="checkbox" id="imc" checked style="width:auto;margin-right:4px">項目(大項目・小項目・色・特別支出)も読み込む内容にそろえる</label>
 <button class="p" id="imm" style="width:100%;margin:4px 0">今の記録に追加して読み込む</button>
 <button class="d" id="imr" style="width:100%;margin:4px 0">全て置き換えて読み込む</button>
 <div class="mu" style="font-size:12px">追加: 同じ記録は上書きし、新しい記録は足します。置き換え: いまのデータを消して、読み込む内容だけにします。</div>
@@ -336,7 +344,7 @@ function fillYm(y,m,yv,a0,sd){
   lo=Math.min(lo,ty);hi=Math.max(hi,ty)+1;
   const ys=$("ysel"),key=lo+"-"+hi;if(ys.dataset.r!==key){let h="";for(let i=lo;i<=hi;i++)h+=`<option value="${i}">${i}年</option>`;ys.innerHTML=h;ys.dataset.r=key}ys.value=y;
   const ms=$("msel");if(!ms.options.length)ms.innerHTML=Array.from({length:12},(_,i)=>`<option value="${i}">${i+1}月</option>`).join("");ms.value=m;ms.style.display=yv?"none":"";
-  const e1=new Date(y,m+1,sd-1);$("yr").textContent=(yv||sd===1)?"":(a0.getMonth()+1)+"/"+a0.getDate()+"〜"+(e1.getMonth()+1)+"/"+e1.getDate()}
+  const e1=new Date(y,m+1,sd-1);{const ps=(yv||sd===1)?"":(a0.getMonth()+1)+"/"+a0.getDate()+"〜"+(e1.getMonth()+1)+"/"+e1.getDate();$("yr").textContent=ps?"集計期間 "+ps:"";$("yr").style.display=ps?"":"none"}}
 function sumHtml(by,sb,lb,tot,det,emp,tl){
   const ks=CATS.filter(c=>Object.prototype.hasOwnProperty.call(by,c));Object.keys(by).forEach(c=>{if(!ks.includes(c))ks.push(c)});
   if(!ks.length)return `<span class="mu">${emp||"支出はまだありません"}</span>`;
@@ -353,12 +361,12 @@ function incHtml(iby,ti,tn,tx,net,isb,det){
   return h}
 let yopen=new Set(),ykL=[],yearX=null;
 function renderYear(base,y){
-  const ys=String(y),ex={},inc={},exs={},ics={},sp={},sps={},tx=Array(12).fill(0),ti=Array(12).fill(0),tsp=Array(12).fill(0);let tn=0;
+  const ys=String(y),ex={},inc={},exs={},ics={},sp={},sps={},tx=Array(12).fill(0),ti=Array(12).fill(0),tsp=Array(12).fill(0),has=Array(12).fill(false);let tn=0;
   const add=(m,sm,i,mi)=>{(m[i.c]=m[i.c]||Array(12).fill(0))[mi]+=i.p;const o=sm[i.c]=sm[i.c]||{},k=i.s||"";(o[k]=o[k]||Array(12).fill(0))[mi]+=i.p};
-  base.filter(e=>keyOf(e).startsWith(ys+"-")).forEach(e=>{const mi=+keyOf(e).slice(5,7)-1;e.items.forEach(i=>{
+  base.filter(e=>keyOf(e).startsWith(ys+"-")).forEach(e=>{const mi=+keyOf(e).slice(5,7)-1;has[mi]=true;e.items.forEach(i=>{
     if(e.type==="exp"){if(isSp(i.c)){add(sp,sps,i,mi);tsp[mi]+=i.p}else{add(ex,exs,i,mi);tx[mi]+=i.p}}else if(incFlag(i.c)){add(inc,ics,i,mi);ti[mi]+=i.p}else tn+=i.p})});
   const sum=a=>a.reduce((x,v)=>x+v,0),fm=n=>n?n.toLocaleString("en-US"):"–";
-  const nmon=[0,1,2,3,4,5,6,7,8,9,10,11].filter(i=>tx[i]||ti[i]||tsp[i]).length,avg=a=>nmon?Math.round(sum(a)/nmon):0;
+  const nmon=has.filter(Boolean).length,avg=a=>nmon?Math.round(sum(a)/nmon):0;
   const ord=(order,map)=>order.filter(c=>Object.prototype.hasOwnProperty.call(map,c)).concat(Object.keys(map).filter(c=>!order.includes(c)));
   ykL=[];const xr=[["項目"].concat(Array.from({length:12},(_,i)=>(i+1)+"月"),["合計","平均"])];
   const xpush=(label,a)=>xr.push([label].concat(a,[sum(a),avg(a)]));
@@ -377,7 +385,7 @@ function renderYear(base,y){
   xr.push([]);xr.push(["特別支出を含めた収支"]);xr.push(xr[0].slice());
   const body2=tb("収入合計",ti)+tb("支出合計",tx)+sec("特別支出")+catRows("c",CATS,sp,sps)+tb("特別支出合計",tsp)+tb("収支(特別支出込)",ti.map((v,i)=>v-tx[i]-tsp[i]));
   yearX={y,rows:xr,n:nmon};
-  $("ysum").innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><b>${y}年の合計(レシート+口座)</b><button data-yx="1" style="padding:5px 12px">Excelに出力</button></div><div class="mu" id="yxm" style="font-size:12px;margin:2px 0"></div><div class="mu" style="font-size:12px;margin-bottom:6px">項目名を押すと小項目が開きます。平均は、収入か支出のある月(${nmon}か月)で割っています。上の表の支出には特別支出を入れていません</div><div style="overflow:auto;max-height:72vh"><table class="yt"><thead>${head}</thead><tbody>${body}</tbody></table></div><div style="margin-top:16px;padding-top:10px;border-top:1px solid var(--bd)"><b>特別支出を含めた収支</b><div class="mu" style="font-size:12px;margin:2px 0 6px">収入合計 − 支出合計 − 特別支出合計</div><div style="overflow:auto;max-height:72vh"><table class="yt"><thead>${head}</thead><tbody>${body2}</tbody></table></div></div>${tn?`<div class="mu" style="margin-top:6px">現金の出し入れ(収入に含めない): ${sgn(tn)}</div>`:""}`}
+  $("ysum").innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><b>${y}年の合計(レシート+口座)</b><button data-yx="1" style="padding:5px 12px">Excelに出力</button></div><div class="mu" id="yxm" style="font-size:12px;margin:2px 0"></div><div class="mu" style="font-size:12px;margin-bottom:6px">項目名を押すと小項目が開きます。平均は、記録を入力した月(${nmon}か月)で割っています。上の表の支出には特別支出を入れていません</div><div style="overflow:auto;max-height:72vh"><table class="yt"><thead>${head}</thead><tbody>${body}</tbody></table></div><div style="margin-top:16px;padding-top:10px;border-top:1px solid var(--bd)"><b>特別支出を含めた収支</b><div class="mu" style="font-size:12px;margin:2px 0 6px">収入合計 − 支出合計 − 特別支出合計</div><div style="overflow:auto;max-height:72vh"><table class="yt"><thead>${head}</thead><tbody>${body2}</tbody></table></div></div>${tn?`<div class="mu" style="margin-top:6px">現金の出し入れ(収入に含めない): ${sgn(tn)}</div>`:""}`}
 async function exportYear(){const m=$("yxm");if(!yearX)return;const{y,rows}=yearX;let data,name;
   try{
     if(typeof XLSX!=="undefined"){const ws=XLSX.utils.aoa_to_sheet(rows);ws["!cols"]=[{wch:22}].concat(Array(14).fill({wch:10}));
@@ -462,7 +470,7 @@ function setType(t){type=t;document.querySelectorAll("#tp button").forEach(b=>b.
   if(t==="inc"&&rows.every(r=>!r.n&&!r.p))rows=[{n:"",p:"",c:ICATS[0]}];if(t==="exp"&&rows.length&&ICATS.includes(rows[0].c))rows=rows.map(r=>({...r,c:c0(),s:""}));drawRows()}
 $("tp").onclick=e=>{const b=e.target.closest("button");if(b)setType(b.dataset.t)};
 function openDay(k){selDay=k;editId=null;hlIds=[];xArm=-1;delArm=null;rows=[{n:"",p:"",c:c0()}];$("sh").value="";$("pm").value="cash";$("nt").style.display="none";
-  $("mt").textContent=k.replace(/-0?/g,(m,i)=>i===4?"年":"月")+"日";setType("exp");drawDay();$("ddw").style.display=mode==="db"?"":"none";$("rdw").style.display=mode==="rc"?"":"none";$("rd").value=k;$("dd").value=k;$("dn").value="";$("dm").value=pk(k);$("dm").dataset.auto="1";$("more").style.display="none";$("txw").style.display="none";$("txa").value="";$("dl").style.display=mode==="db"?"none":"";$("dx").style.display="none";dxArm=false;$("dx").textContent="削除";if(mode==="db")$("mt").textContent="口座の入力";$("shl").style.display="none";$("dnl").style.display="none";$("mo").classList.add("on")}
+  $("mt").textContent=k.replace(/-0?/g,(m,i)=>i===4?"年":"月")+"日";setType("exp");drawDay();$("ddw").style.display=mode==="db"?"":"none";$("rdw").style.display=mode==="rc"?"":"none";$("rd").value=k;$("dd").value=k;$("dn").value="";$("dm").value=pk(k);$("dm").dataset.auto="1";$("more").style.display="none";$("txw").style.display="none";$("txa").value="";cpClose();$("dl").style.display=mode==="db"?"none":"";$("dx").style.display="none";dxArm=false;$("dx").textContent="削除";if(mode==="db")$("mt").textContent="口座の入力";$("shl").style.display="none";$("dnl").style.display="none";$("mo").classList.add("on")}
 let hlIds=[];
 function drawDay(){const es=E().filter(e=>e.date===selDay);
   $("dl").innerHTML=es.map(e=>{const on=editId===e.id,hl=on||hlIds.includes(e.id),t=e.items.reduce((a,i)=>a+i.p,0),
@@ -525,7 +533,8 @@ function cdraw(){
     if(P(k,a,"m")){let n=0;eachItem(k,i=>{if(i.c===m.n)n++});
       const dsts=L.filter(x=>x!==m).sort((p,q)=>(!!p.sp===!!m.sp?0:1)-(!!q.sp===!!m.sp?0:1));
       h+=`<div style="${bx}">「${esc(m.n)}」を削除します。${n?`この項目の記録${n}件の移し先:<br><select id="dst" style="margin:4px 0">${dsts.map(x=>`<option>${esc(x.n)}</option>`).join("")}</select>`:""}${btn(k)}</div>`}
-    h+=m.subs.map((x,b)=>P(k,a,"s",b)?`<div style="${bx};margin-left:14px">小項目「${esc(x)}」を削除します(記録は小項目なしになります)${btn(k)}</div>`:`<div class="it2" style="margin-left:14px;grid-template-columns:1fr 34px 34px 56px"><input data-k="${k}" data-a="${a}" data-b="${b}" value="${esc(x)}">${arrows(k,a,b,m.subs.length,"data-sv",b)}<button class="d" data-k="${k}" data-a="${a}" data-ds="${b}">削除</button></div>`).join("");
+    const dsx=L.filter(y=>y!==m).sort((p,q)=>(!!p.sp===!!m.sp?0:1)-(!!q.sp===!!m.sp?0:1));
+    h+=m.subs.map((x,b)=>P(k,a,"s",b)?`<div style="${bx};margin-left:14px">小項目「${esc(x)}」を削除します(記録は小項目なしになります)${btn(k)}</div>`:`<div class="it2" style="margin-left:14px;grid-template-columns:1fr 34px 34px 46px 52px"><input data-k="${k}" data-a="${a}" data-b="${b}" value="${esc(x)}">${arrows(k,a,b,m.subs.length,"data-sv",b)}<button data-k="${k}" data-a="${a}" data-xs="${b}" style="padding:2px">移動</button><button class="d" data-k="${k}" data-a="${a}" data-ds="${b}">削除</button></div>${P(k,a,"x",b)?`<div style="${bx};margin-left:14px">小項目「${esc(x)}」を移す大項目です(この小項目の記録も一緒に移ります):<br><select id="mvd" style="margin:4px 0">${dsx.map(y=>`<option>${esc(y.n)}</option>`).join("")}</select><div style="display:flex;gap:6px;margin-top:4px"><button class="p" data-k="${k}" data-ok="1">移動する</button><button data-k="${k}" data-no="1">やめる</button></div></div>`:""}`).join("");
     return h+`<div class="it2" style="margin-left:14px"><input id="ns-${k}-${a}" placeholder="小項目を追加"><button data-k="${k}" data-a="${a}" data-as="1">追加</button></div></div>`}).join("")+`<div class="it2"><input id="nm-${k}${sp?"s":""}" placeholder="${sp?"特別支出の大項目を追加":"大項目を追加"}"><button class="p" data-k="${k}" data-am="1"${sp?' data-sp="1"':""}>追加</button></div>`};
   $("cb").innerHTML=`<b>支出の項目</b>${sec(CL,"c",false)}<br><b>特別支出の項目</b><div class="mu" style="font-size:12px;margin-top:2px">月の合計の支出・収支には入れません。年の合計では別枠の表で集計します</div>${sec(CL,"c",true)}<br><b>収入・入金の項目</b>${sec(IL,"i",false)}`}
 function cstore(){pend=null;fixCi(CL);fixCi(IL);S.cats=cpL(CL);S.icats=cpL(IL);save();render();cdraw()}
@@ -544,11 +553,13 @@ $("cb").onclick=e=>{const t=e.target,k=t.dataset.k;if(!k||t.disabled)return;cons
   if(t.dataset.no){pend=null;cdraw()}
   else if(t.dataset.ok&&pend){const m=L[pend.a];
     if(pend.t==="m"){const d=$("dst"),to=d?d.value:null;if(to)eachItem(k,i=>{if(i.c===m.n){i.c=to;i.s=""}});L.splice(pend.a,1)}
+    else if(pend.t==="x"){const x=m.subs[pend.b],d=$("mvd"),to=d?L.find(y=>y.n===d.value):null;if(to&&to!==m){eachItem(k,i=>{if(i.c===m.n&&i.s===x)i.c=to.n});if(!to.subs.includes(x))to.subs.push(x);m.subs.splice(pend.b,1)}}
     else{const x=m.subs[pend.b];eachItem(k,i=>{if(i.c===m.n&&i.s===x)i.s="";});m.subs.splice(pend.b,1)}
     cstore()}
   else if(t.dataset.mv!==undefined){const d=+t.dataset.mv;let j=a+d;while(j>=0&&j<L.length&&!!L[j].sp!==!!L[a].sp)j+=d;if(j<0||j>=L.length)return;const x=L[a];L[a]=L[j];L[j]=x;cstore()}
   else if(t.dataset.sv!==undefined){const m=L[a],b=+t.dataset.b,j=b+(+t.dataset.sv);if(j<0||j>=m.subs.length)return;const x=m.subs[b];m.subs[b]=m.subs[j];m.subs[j]=x;cstore()}
   else if(t.dataset.dm!==undefined){pend={k,a:+t.dataset.dm,t:"m"};cdraw()}
+  else if(t.dataset.xs!==undefined){pend={k,a,t:"x",b:+t.dataset.xs};cdraw()}
   else if(t.dataset.ds!==undefined){pend={k,a,t:"s",b:+t.dataset.ds};cdraw()}
   else if(t.dataset.as){const m=L[a],nw=$("ns-"+k+"-"+a).value.trim();if(!nw||m.subs.includes(nw))return;m.subs.push(nw);cstore()}
   else if(t.dataset.am){const sp=!!t.dataset.sp,nw=$("nm-"+k+(sp?"s":"")).value.trim();if(!nw||L.some(x=>x.n===nw))return;if(sp)L.push({n:nw,subs:[],sp:true});else{const j=L.findIndex(x=>x.n===pr&&!x.sp);L.splice(j<0?L.length:j,0,{n:nw,subs:[]})}cstore()}};
@@ -640,6 +651,11 @@ function parseRcText(raw){
   return{store,date,items:items.filter(x=>x.n),total}}
 
 function histCat(){const m=new Map();S.entries.concat(S.debits).slice().sort((a,b)=>a.date<b.date?-1:1).forEach(e=>{if(e.type!=="exp")return;e.items.forEach(i=>{const n=(i.n||"").trim();if(n&&CATS.includes(i.c))m.set(n,{c:i.c,s:i.s||""})})});return m}
+let cpUrl=null;
+function cpClose(){if(cpUrl){URL.revokeObjectURL(cpUrl);cpUrl=null}$("cpi").removeAttribute("src");$("cpw").style.display="none"}
+function cpShow(f){if(!f)return;if(cpUrl)URL.revokeObjectURL(cpUrl);cpUrl=URL.createObjectURL(f);$("cpi").src=cpUrl;$("cpw").style.display=""}
+$("cpc").onclick=()=>{$("cpf").value="";$("cpf").click()};$("cpp").onclick=()=>{$("cpl").value="";$("cpl").click()};
+$("cpf").onchange=e=>cpShow(e.target.files[0]);$("cpl").onchange=e=>cpShow(e.target.files[0]);$("cpx").onclick=cpClose;
 $("txb").onclick=()=>{const w=$("txw");w.style.display=w.style.display==="none"?"":"none";if(w.style.display==="")$("txa").focus()};
 $("txg").onclick=()=>{const r=parseRcText($("txa").value),nt=$("nt");nt.style.display="block";
   if(!r.items.length){nt.textContent="品目と金額を読み取れませんでした。貼り付けた文字を確認してください";return}
@@ -648,7 +664,7 @@ $("txg").onclick=()=>{const r=parseRcText($("txa").value),nt=$("nt");nt.style.di
   const sum=rows.reduce((a,x)=>a+(+x.p||0),0);let msg=nr.length+"品目を入力しました。大項目は過去の入力から推定し、初めての品目は「"+c0()+"」にしています。";
   if(r.total!=null)msg+=sum===r.total?"合計がレシートの合計("+yen(r.total)+")と一致しました。":"品目の合計("+yen(sum)+")がレシートの合計("+yen(r.total)+")と違います(税の行や読み落としの可能性)。";
   if(r.date&&r.date!==selDay)msg+=" レシートの日付は "+r.date+" です(今は "+selDay+" に入力中)。";
-  nt.textContent=msg;$("txa").value="";$("txw").style.display="none";drawRows()};
+  nt.textContent=msg;$("txa").value="";$("txw").style.display="none";cpClose();drawRows()};
 function goEntry(v){const i=v.indexOf(":"),l=v.slice(0,i),id=v.slice(i+1);saveTabPos();mode=l==="d"?"db":"rc";view="m";impMsg="";{const en=(l==="d"?S.debits:S.entries).find(x=>x.id===id);if(en){if(l==="d")foldDn.delete(en.dname||"");foldDay.delete(en.date);const kk=(l==="d"?bmOf(en):pk(en.date)).split("-");cur=new Date(+kk[0],+kk[1]-1,1)}}render();
   const el=Array.from($("list").querySelectorAll("[data-g]")).find(r=>r.dataset.g.split(",").includes(id));
   if(el){el.classList.add("hl");el.scrollIntoView({block:"center",behavior:"smooth"});setTimeout(()=>el.classList.remove("hl"),3500)}else window.scrollTo(0,0)}
@@ -785,7 +801,10 @@ $("imm").onclick=()=>{const D=parseBk();if(!D)return;let add=0,upd=0;
   const mg=(a,b)=>b.forEach(x=>{const i=a.findIndex(y=>y.id===x.id);if(i<0){a.push(x);add++}else{a[i]=x;upd++}});
   mg(S.entries,D.entries);mg(S.debits,D.debits);
   const mc=(Lc,Dn)=>(Dn||[]).forEach(x=>{const nx=typeof x==="string"?{n:x,subs:[]}:x,m=Lc.find(y=>y.n===nx.n);if(!m)Lc.push({n:nx.n,subs:(nx.subs||[]).slice(),...(nx.sp?{sp:true}:{})});else(nx.subs||[]).forEach(z=>{if(!m.subs.includes(z))m.subs.push(z)})});
-  mc(CL,D.cats);mc(IL,D.icats);cstore();
+  if($("imc").checked&&(D.cats||D.icats)){const used=new Set();S.entries.concat(S.debits).forEach(e=>e.items.forEach(i=>{used.add(i.c);used.add(i.c+"\u0000"+(i.s||""))}));
+    const sy=(Lc,Dn)=>{if(!Array.isArray(Dn)||!Dn.length)return;const nx=Dn.map(x=>typeof x==="string"?{n:x,subs:[]}:{n:x.n,subs:(x.subs||[]).slice(),...(x.ci!=null?{ci:x.ci}:{}),...(x.inc!==undefined?{inc:x.inc}:{}),...(x.sp?{sp:true}:{})});
+      Lc.forEach(m=>{const q=nx.find(y=>y.n===m.n);if(q)m.subs.forEach(z=>{if(used.has(m.n+"\u0000"+z)&&!q.subs.includes(z))q.subs.push(z)});else if(used.has(m.n))nx.push(m)});Lc.length=0;nx.forEach(x=>Lc.push(x))};
+    sy(CL,D.cats);sy(IL,D.icats)}else{mc(CL,D.cats);mc(IL,D.icats)}cstore();
   $("imm2").textContent=add+"件を追加、"+upd+"件を上書きしました"};
 $("imr").onclick=()=>{const D=parseBk();if(!D)return;
   if(!armR){armR=true;$("imr").textContent="本当に置き換える(いまのデータは消えます)";return}
