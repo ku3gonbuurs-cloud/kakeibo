@@ -85,6 +85,10 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 input[type=date],input[type=month]{-webkit-appearance:none;appearance:none;display:block;width:100%;min-width:0;max-width:100%;min-height:38px;line-height:1.2;text-align:left}
 input[type=date]::-webkit-date-and-time-value,input[type=month]::-webkit-date-and-time-value{text-align:left;min-width:0}
 .g2>div,#rdw,#ddw>*{min-width:0}
+#sp{display:flex;gap:8px}
+#sp>div:first-child{flex:1;min-width:0}
+#pmw{flex:0 0 96px}
+#pm{width:100%}
 </style>
 </head>
 <body>
@@ -118,20 +122,18 @@ input[type=date]::-webkit-date-and-time-value,input[type=month]::-webkit-date-an
 <div id="ddw" style="display:none"><div class="g2"><div><span class="mu">利用日(照合用)</span><input type="date" id="dd"></div><div><span class="mu">引落月(集計する月)</span><input type="month" id="dm"></div></div><div style="margin-bottom:8px"><span class="mu">引落名</span><div style="display:flex;gap:4px"><input id="dn" autocomplete="off" placeholder="例: 楽天カード6月分"><button id="dnb" type="button" style="padding:2px 10px">▾</button></div><div id="dnl" class="sgl" style="display:none"></div></div></div>
 <div id="rdw" style="display:none;margin-bottom:8px"><span class="mu">日付</span><input type="date" id="rd"></div>
 <div class="seg" id="tp"><button data-t="exp" class="on">支出</button><button data-t="inc">入金</button></div>
-<div id="rc"><div id="camrow" style="display:flex;gap:6px;margin-bottom:6px"><button class="p" id="cam" style="flex:1">📷 撮影して読み取る</button><button id="pic" style="flex:1">🖼 写真から選ぶ(複数可)</button></div>
-<button id="more" style="display:none;width:100%;margin-bottom:6px">＋ レシートの続きを追加で読み取る</button>
-<button id="txb" style="width:100%;margin-bottom:6px">📋 コピーした文字から入力</button>
-<div id="txw" style="display:none;margin-bottom:6px"><div class="mu" style="font-size:12px;margin-bottom:4px">①「撮影して表示」か「写真から選ぶ」で写真を出し、文字を長押し →「すべてを選択」→「コピー」。②または下の欄を長押し →「テキストをスキャン」(iOS 15以降)でカメラから直接入れます。どちらも、貼り付けたら「反映する」を押します</div><div style="display:flex;gap:6px;margin-bottom:6px"><button id="cpc" style="flex:1">📷 撮影して表示</button><button id="cpp" style="flex:1">🖼 写真から選ぶ</button></div>
-<div id="cpw" style="display:none;margin-bottom:6px"><img id="cpi" alt="" style="width:100%;max-height:55vh;object-fit:contain;border-radius:8px;border:1px solid var(--bd);-webkit-user-select:auto;user-select:auto"><div class="mu" style="font-size:12px;margin:4px 0">写真の文字を長押し →「すべてを選択」→「コピー」。そのあと下の欄に貼り付けます</div><button id="cpx" style="width:100%;margin-bottom:6px">写真を閉じる</button></div>
-<input type="file" id="cpf" accept="image/*" capture="environment" hidden><input type="file" id="cpl" accept="image/*" hidden>
-<textarea id="txa" rows="6" style="width:100%;background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:8px;font-size:16px"></textarea><button class="p" id="txg" style="width:100%;margin-top:4px">品目に反映する</button></div>
-<input type="file" id="fl" accept="image/*" capture="environment" hidden><input type="file" id="fl2" accept="image/*" multiple hidden></div>
+<div id="rc">
+<div id="txw" style="margin-bottom:6px"><div style="display:flex;gap:6px;align-items:stretch"><button id="cpc" type="button" style="flex:0 0 84px;padding:4px 6px;font-size:13px;line-height:1.3;white-space:normal">📷 撮影<br>して表示</button><textarea id="txa" rows="2" placeholder="文字を貼り付け" style="flex:1;min-width:0;background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:6px 8px;font-size:16px"></textarea><button class="p" id="txg" type="button" style="flex:0 0 auto;padding:4px 10px;font-size:14px">反映する</button></div>
+<div id="cpw" style="display:none;margin-top:6px"><img id="cpi" alt="" style="width:100%;max-height:55vh;object-fit:contain;border-radius:8px;border:1px solid var(--bd);-webkit-user-select:auto;user-select:auto"><div class="mu" style="font-size:12px;margin:4px 0">写真の文字を長押し →「すべてを選択」→「コピー」。そのあと上の欄に貼り付けて「反映する」を押します</div><button id="cpx" type="button" style="width:100%">写真を閉じる</button></div>
+<input type="file" id="cpf" accept="image/*" capture="environment" hidden></div>
+</div>
 <div class="note" id="nt"></div>
-<div class="g2" id="sp"><div><span class="mu" id="sl">店名・メモ</span><div style="display:flex;gap:4px"><input id="sh" autocomplete="off" placeholder="入力 or ▾で履歴から"><button id="shb" type="button" style="padding:2px 10px">▾</button></div></div><div id="pmw"><span class="mu">支払方法</span><select id="pm"><option value="cash">現金</option><option value="other">カード(残高に影響なし)</option><option value="etc">他(残高に影響なし)</option></select></div></div>
+<div class="g2" id="sp"><div><span class="mu" id="sl">店名・メモ</span><div style="display:flex;gap:4px"><input id="sh" autocomplete="off" placeholder="入力 or ▾で履歴から"><button id="shb" type="button" style="padding:2px 10px">▾</button></div></div><div id="pmw"><span class="mu">支払方法</span><select id="pm"><option value="cash">現金</option><option value="other">カード</option><option value="etc">他</option></select></div></div>
+<div id="pmh" class="mu" style="font-size:12px;margin:-4px 0 8px;display:none">カード・他は、現金の残高に影響しません</div>
 <div id="shl" style="display:none;max-height:190px;overflow-y:auto;border:1px solid var(--bd);border-radius:8px;margin:-4px 0 8px;background:var(--sf)"></div>
 <div id="ith" class="it5 mu" style="font-size:12px;margin-bottom:2px"></div>
 <div id="its"></div>
-<button id="ad">＋品目を追加</button>
+<div style="display:flex;gap:6px"><button id="ad">＋品目を追加</button><button id="rod" type="button">↕ 並べ替え</button></div>
 <div style="display:flex;gap:8px;margin-top:10px;align-items:center"><b id="tt" style="flex:1"></b><button class="d" id="dx" style="display:none">削除</button><button class="p" id="sv">保存</button></div>
 </div></div>
 
@@ -151,11 +153,12 @@ input[type=date]::-webkit-date-and-time-value,input[type=month]::-webkit-date-an
 
 <div class="mo" id="mi"><div class="mb">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><b>カード明細の取り込み</b><button id="ic2">閉じる</button></div>
-<p class="mu">カードの利用明細(日付・利用店・支払区分・金額の行)を貼り付けてください。日付はレシートとの照合だけに使い、家計簿には引落月で入ります。貼り付けの中に同じ日・同じ店・同じ金額の行が複数あるときは、1件ずつ別の記録として取り込みます。すでに家計簿にある記録と同じ場合は、取り込まずに引落月と引落名だけ更新します(下のチェックで、別の記録として取り込むこともできます)。</p>
+<p class="mu">カードの利用明細(日付・利用店・支払区分・金額の行)を貼り付けてください。日付はレシートとの照合だけに使い、家計簿には引落月で入ります。銀行アプリの入出金の画面をコピーした文字(名前・日付・金額が別々の行に並ぶ形式)も読み込めます。その場合、マイナスは出金(支出)、プラスは入金(収入)として入り、引落月の欄の月にまとめて入ります。月をまたぐ明細は、下のチェックで日付から月を決められます。引落名を空にすると「口座入出金」になります。すでに取り込んだ同じ記録は、集計する月だけ更新します。貼り付けの中に同じ日・同じ店・同じ金額の行が複数あるときは、1件ずつ別の記録として取り込みます。すでに家計簿にある記録と同じ場合は、取り込まずに引落月と引落名だけ更新します(下のチェックで、別の記録として取り込むこともできます)。</p>
 <div style="display:flex;gap:6px;margin-bottom:8px"><div style="flex:0 0 120px"><span class="mu" style="font-size:12px">引落月</span><input type="month" id="idm" style="padding:4px 6px;font-size:14px"></div><div style="flex:1;min-width:0"><span class="mu" style="font-size:12px">引落名(任意)</span><div style="display:flex;gap:4px"><input id="idn" autocomplete="off" placeholder="例: 楽天カード6月分" style="padding:4px 6px;font-size:14px"><button id="idb" type="button" style="padding:2px 8px">▾</button></div></div></div>
 <div id="idl" class="sgl" style="display:none"></div>
 <textarea id="itx" rows="8" style="width:100%;background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:8px;font:inherit"></textarea>
 <label style="display:block;font-size:13px;margin:6px 0 0"><input type="checkbox" id="ifc" style="width:auto;margin-right:4px">すでにある同じ日・店・金額の記録があっても、別の記録として取り込む</label>
+<label style="display:block;font-size:13px;margin:6px 0 0"><input type="checkbox" id="ibd" style="width:auto;margin-right:4px">銀行の入出金のとき: 引落月の欄ではなく、日付から月を決める</label>
 <div id="ip" class="mu" style="margin:8px 0"></div>
 <button class="p" id="igo" style="width:100%">口座に取り込む</button>
 </div></div>
@@ -246,6 +249,19 @@ function matchHtml(e){const h=matchOf(e),on=inAll(e),raw=candR(e);
   const head=h.length?"⚠ レシートに同額"+(h.length>1?"が"+h.length+"件":"あり")+": "+names:"レシートに同額の候補 "+raw.length+"件(対応なし)";
   const sel=(h.length>1||e.lk||raw.length>1)?` <span data-pk="d:${esc(e.id)}" style="text-decoration:underline;cursor:pointer;color:var(--ac)">${h.length>1?"どれと同じか選ぶ":"選び直す"} ›</span>`:"";
   return `<br><span style="font-size:12px;color:${h.length?"var(--rd)":"var(--mu)"}">${head}</span>${sel}<br>${cb}${h.length===1?`<span class="mu" style="font-size:12px"> ${on?"(レシート側は合計から外します)":"(レシート側を合計に入れます)"}</span>`:""}`}
+function parseBank(raw){
+  const L=raw.normalize("NFKC").split(/\r?\n/).map(s=>s.trim()).filter(Boolean),DT=/^(\d{4})[\/.-](\d{1,2})[\/.-](\d{1,2})$/,AM=/^[+\-−]?\d[\d,]*(?:円)?$/;
+  const pairs=[],amts=[];let pend=null;
+  L.forEach(l=>{
+    const d=l.match(DT);
+    if(d){if(pend)pairs.push({date:d[1]+"-"+pad(+d[2])+"-"+pad(+d[3]),name:pend});pend=null;return}
+    if(AM.test(l)){if(pairs.length){const v=parseInt(l.replace(/[^\d]/g,""),10);amts.push(/^[-−]/.test(l)?-v:v)}return}
+    let s=l.replace(/^[出入]\s*(?=\S)/,"").replace(/^\(\s*(?![株有社財学医合特一])/,"").trim();
+    if(s.length>1)pend=s});
+  if(!pairs.length||!amts.length)return[];
+  const k=Math.min(pairs.length,amts.length),out=pairs.slice(0,k).map((q,i)=>({date:q.date,name:nm(q.name),p:amts[i]}));
+  out.bank=true;if(pairs.length!==amts.length)out.warn="名前・日付が"+pairs.length+"件、金額が"+amts.length+"件で数が合いません。先頭から"+k+"件だけ読み取りました";return out}
+function parseAny(t){const r=parseCard(t);return r.length?r:parseBank(t)}
 function nm(t){return t.normalize("NFKC").replace(/([^ン])-/g,"$1ー")}
 function parseCard(t){const out=[];t.split(/\r?\n/).forEach(l=>{l=l.trim();const m=l.match(/^(\d{4})[\/.-](\d{1,2})[\/.-](\d{1,2})\s+(.+?)\s+(?:本人|家族)\s+\S+\s+(-?[\d,]+)$/);if(m)out.push({date:m[1]+"-"+pad(+m[2])+"-"+pad(+m[3]),name:nm(m[4]),p:parseInt(m[5].replace(/,/g,""),10)})});return out}
 function E(){return mode==="db"?S.debits:S.entries}
@@ -443,6 +459,7 @@ function render(){
   const gr=[],gm={};
   const meL=(mode==="rc"&&payF!=="all")?me.filter(e=>payF==="cash"?(e.pay==="cash"||e.type==="inc"):e.pay===payF):me;
   meL.forEach(e=>{const st=(e.store||"").trim(),gk=e.id;let g=gm[gk];if(!g){g=gm[gk]={date:e.date,type:e.type,store:st,pay:e.pay,ids:[],cat:{},t:0,n:0,e:e,dn:e.dname};gr.push(g)}g.ids.push(e.id);g.n+=e.items.length;e.items.forEach(i=>{g.cat[i.c]=(g.cat[i.c]||0)+i.p;g.t+=i.p})});
+  if(mode==="rc")gr.sort((a,b)=>a.date<b.date?1:a.date>b.date?-1:0);
   if(mode==="db")gr.sort((a,b)=>{const x=a.dn||"\uffff",z=b.dn||"\uffff";return x<z?-1:x>z?1:a.date<b.date?-1:a.date>b.date?1:0});
   const incOf=g=>Object.keys(g.cat).reduce((a,c)=>a+(incFlag(c)?g.cat[c]:0),0),movOf=g=>Object.keys(g.cat).reduce((a,c)=>a+(incFlag(c)?0:g.cat[c]),0);
   const hd=(g,gi)=>{const hb="font-weight:700;font-size:14px;background:var(--ac2);border-radius:6px;padding:3px 8px;margin:"+(gi?"12px":"0")+" 0 2px;display:flex;justify-content:space-between;gap:8px";
@@ -469,8 +486,10 @@ $("mbh").onclick=e=>{const k=e.target.dataset.bd;if(!k)return;S.bal=(S.bal||[]).
 function setType(t){type=t;document.querySelectorAll("#tp button").forEach(b=>b.classList.toggle("on",b.dataset.t===t));$("rc").style.display=t==="exp"&&mode==="rc"?"":"none";$("sp").style.display=t==="exp"?"":"none";if(t!=="exp")$("shl").style.display="none";$("pmw").style.display=mode==="rc"?"":"none";$("tp").style.display="";$("tp").querySelector('[data-t="inc"]').textContent=mode==="db"?"収入":"入金";$("sl").textContent=mode==="db"?"店名":"店名・メモ";
   if(t==="inc"&&rows.every(r=>!r.n&&!r.p))rows=[{n:"",p:"",c:ICATS[0]}];if(t==="exp"&&rows.length&&ICATS.includes(rows[0].c))rows=rows.map(r=>({...r,c:c0(),s:""}));drawRows()}
 $("tp").onclick=e=>{const b=e.target.closest("button");if(b)setType(b.dataset.t)};
-function openDay(k){selDay=k;editId=null;hlIds=[];xArm=-1;delArm=null;rows=[{n:"",p:"",c:c0()}];$("sh").value="";$("pm").value="cash";$("nt").style.display="none";
-  $("mt").textContent=k.replace(/-0?/g,(m,i)=>i===4?"年":"月")+"日";setType("exp");drawDay();$("ddw").style.display=mode==="db"?"":"none";$("rdw").style.display=mode==="rc"?"":"none";$("rd").value=k;$("dd").value=k;$("dn").value="";$("dm").value=pk(k);$("dm").dataset.auto="1";$("more").style.display="none";$("txw").style.display="none";$("txa").value="";cpClose();$("dl").style.display=mode==="db"?"none":"";$("dx").style.display="none";dxArm=false;$("dx").textContent="削除";if(mode==="db")$("mt").textContent="口座の入力";$("shl").style.display="none";$("dnl").style.display="none";$("mo").classList.add("on")}
+let modalY=null;
+function backScroll(){if(modalY==null)return;const y=modalY,go=()=>window.scrollTo(0,y);try{if(document.activeElement&&document.activeElement.blur)document.activeElement.blur()}catch(e){}go();requestAnimationFrame(go);setTimeout(go,150);setTimeout(go,400)}
+function openDay(k){modalY=window.scrollY||document.documentElement.scrollTop||0;rowOrd=false;selDay=k;editId=null;hlIds=[];xArm=-1;delArm=null;rows=[{n:"",p:"",c:c0()}];$("sh").value="";$("pm").value="cash";$("nt").style.display="none";
+  $("mt").textContent=k.replace(/-0?/g,(m,i)=>i===4?"年":"月")+"日";setType("exp");drawDay();$("ddw").style.display=mode==="db"?"":"none";$("rdw").style.display=mode==="rc"?"":"none";$("rd").value=k;$("dd").value=k;$("dn").value="";$("dm").value=pk(k);$("dm").dataset.auto="1";$("txa").value="";cpClose();$("dl").style.display=mode==="db"?"none":"";$("dx").style.display="none";dxArm=false;$("dx").textContent="削除";if(mode==="db")$("mt").textContent="口座の入力";$("shl").style.display="none";$("dnl").style.display="none";$("mo").classList.add("on")}
 let hlIds=[];
 function drawDay(){const es=E().filter(e=>e.date===selDay);
   $("dl").innerHTML=es.map(e=>{const on=editId===e.id,hl=on||hlIds.includes(e.id),t=e.items.reduce((a,i)=>a+i.p,0),
@@ -484,6 +503,9 @@ function amt(r,i){return `<span style="display:flex;align-items:center;gap:3px">
 function xb(i){return xArm===i?`<button class="d" data-x="${i}" style="font-size:11px;padding:2px 0">消す?</button>`:`<button data-x="${i}">×</button>`}
 function subsOf(c){const l=(type==="inc"?IL:CL).find(x=>x.n===c);return l?l.subs:[]}
 function drawRows(){const inc=type==="inc",cs=inc?ICATS:CATS;
+  $("pmh").style.display=($("pmw").style.display!=="none"&&$("pm").value!=="cash")?"":"none";
+  $("rod").textContent=rowOrd?"✔ 並べ替えを終わる":"↕ 並べ替え";$("rod").className=rowOrd?"p":"";$("ith").style.display=rowOrd?"none":"";
+  if(rowOrd){$("its").innerHTML=rows.map((r,i)=>`<div class="row" style="border:0;padding:3px 0;gap:6px;align-items:center"><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(inc?(r.c+(r.s?"・"+r.s:"")):(r.n||"(品目名なし)"))}</span><span class="mu" style="white-space:nowrap">${fmtN(r.p)}円</span><button type="button" data-up="${i}" ${i?"":"disabled"} style="padding:6px 14px">▲</button><button type="button" data-dn="${i}" ${i<rows.length-1?"":"disabled"} style="padding:6px 14px">▼</button></div>`).join("");tot();return}
   const h=$("ith");h.className=(inc?"it4":"it5")+" mu";h.innerHTML=inc?"<span>大項目</span><span>小項目</span><span>金額"+fxB()+"</span><span></span>":"<span>品目</span><span>金額"+fxB()+"</span><span>大項目</span><span>小項目</span><span></span>";
   const cSel=(r,i)=>{const op=c=>`<option${c===r.c?" selected":""}>${esc(c)}</option>`;let o;if(inc)o=cs.map(op).join("");else{const nn=CL.filter(x=>!x.sp).map(x=>x.n),ss=CL.filter(x=>x.sp).map(x=>x.n);o=nn.map(op).join("")+(ss.length?`<optgroup label="特別支出">${ss.map(op).join("")}</optgroup>`:"")}return `<select data-i="${i}" data-f="c">${o}</select>`};
   const sSel=(r,i)=>`<select data-i="${i}" data-f="s"><option value="">なし</option>${subsOf(r.c).map(x=>`<option${x===r.s?" selected":""}>${esc(x)}</option>`).join("")}</select>`;
@@ -496,7 +518,7 @@ function calc(src){const t=String(src).replace(/\s+/g,"").replace(/,/g,"");if(!/
   const term=()=>{let v=fac();while(t[i]==="*"||t[i]==="/"){const o=t[i++],r=fac();if(o==="*")v*=r;else{if(r===0)throw 0;v/=r}}return v};
   const expr=()=>{let v=term();while(t[i]==="+"||t[i]==="-"){const o=t[i++],r=term();v=o==="+"?v+r:v-r}return v};
   try{const v=expr();return i===t.length&&isFinite(v)?v:null}catch(e){return null}}
-let fxMode=false;
+let fxMode=false,rowOrd=false;
 function fxB(){return `<button type="button" id="fxb" class="${fxMode?"p":""}" title="計算式を入力するときのキーボード" style="padding:0 6px;font-size:11px;margin-left:3px">式</button>`}
 function isFormula(r){return /[+*/()]/.test(r)||/\d\s*-/.test(r)}
 function fmtN(p){return p===""||p==null||isNaN(+p)?"":Number(p).toLocaleString("en-US")}
@@ -508,16 +530,18 @@ $("its").oninput=e=>{const t=e.target,i=t.dataset.i;if(i===undefined)return;cons
 $("its").addEventListener("change",e=>{const t=e.target;if(t.dataset.f!=="p")return;const i=+t.dataset.i,raw0=t.value.normalize("NFKC").replace(/×/g,"*").replace(/÷/g,"/");if(!isFormula(raw0))return;
   const v=calc(raw0);if(v==null){t.title="式を計算できません";t.style.outline="1px solid var(--rd)";return}rows[i].p=Math.round(v);t.value=fmtN(rows[i].p);t.style.outline="";t.title="";tot()});
 $("ith").addEventListener("click",e=>{if(e.target.id==="fxb"){fxMode=!fxMode;drawRows()}});
-$("its").onclick=e=>{const x=e.target.dataset.x;if(x===undefined)return;const i=+x,r=rows[i],blank=r&&!String(r.n||"").trim()&&(r.p===""||r.p==null);
+$("its").onclick=e=>{const d=e.target.dataset;if(d.up!==undefined||d.dn!==undefined){const i=+(d.up!==undefined?d.up:d.dn),j=d.up!==undefined?i-1:i+1;if(j>=0&&j<rows.length){const q=rows[i];rows[i]=rows[j];rows[j]=q;xArm=-1;drawRows()}return}const x=e.target.dataset.x;if(x===undefined)return;const i=+x,r=rows[i],blank=r&&!String(r.n||"").trim()&&(r.p===""||r.p==null);
   if(!blank&&xArm!==i){xArm=i;drawRows();return}
   xArm=-1;rows.splice(i,1);if(!rows.length)rows=[{n:"",p:"",c:type==="inc"?ICATS[0]:c0()}];drawRows()};
 $("mo").addEventListener("click",e=>{if(xArm>=0&&e.target.dataset.x===undefined){const b=$("its").querySelector('[data-x="'+xArm+'"]');if(b){b.textContent="×";b.className="";b.style.fontSize=""}xArm=-1}},true);
-$("ad").onclick=()=>{rows.push({n:"",p:"",c:type==="inc"?ICATS[0]:c0()});drawRows()};
-$("cl").onclick=()=>$("mo").classList.remove("on");
+$("pm").onchange=()=>{$("pmh").style.display=$("pm").value!=="cash"?"":"none"};
+$("rod").onclick=()=>{rowOrd=!rowOrd;xArm=-1;drawRows()};
+$("ad").onclick=()=>{rowOrd=false;rows.push({n:"",p:"",c:type==="inc"?ICATS[0]:c0()});drawRows()};
+$("cl").onclick=()=>{$("mo").classList.remove("on");backScroll()};
 $("sv").onclick=()=>{const items=rows.filter(r=>(r.p!==""&&r.p!=null&&!isNaN(+r.p))||String(r.n||"").trim()).map(r=>({n:r.n||"",p:Math.round(+r.p||0),c:r.c,s:r.s||""}));
   if(!items.length){const nt=$("nt");nt.style.display="block";nt.textContent="金額か品目を入力してください(0円も保存できます)";return}
   const en={id:editId||Date.now().toString(36),ts:((E().find(x=>x.id===editId)||{}).ts)||Date.now(),date:mode==="db"?($("dd").value||selDay):($("rd").value||selDay),type,store:type==="inc"?"":$("sh").value,pay:mode==="db"?"bank":type==="inc"?"cash":$("pm").value,items,...(mode==="db"?{dname:$("dn").value.trim(),bm:$("dm").value||pk($("dd").value||selDay),...(()=>{const od=S.debits.find(x=>x.id===editId);return od&&od.mg!==undefined?{mg:od.mg}:{}})()}:{})};
-  {const k0=mode==="db"?"debits":"entries";S[k0]=S[k0].filter(x=>x.id!==editId).concat(en)}save();if(en.date){const bb=(mode==="db"?bmOf(en):pk(en.date)).split("-");cur=new Date(+bb[0],+bb[1]-1,1)}render();$("mo").classList.remove("on")};
+  {const k0=mode==="db"?"debits":"entries";S[k0]=S[k0].filter(x=>x.id!==editId).concat(en)}save();if(en.date){const bb=(mode==="db"?bmOf(en):pk(en.date)).split("-");cur=new Date(+bb[0],+bb[1]-1,1)}render();$("mo").classList.remove("on");backScroll()};
 
 let pend=null;
 function eachItem(k,f){S.entries.concat(S.debits||[]).forEach(e=>{if(e.type===(k==="c"?"exp":"inc"))e.items.forEach(f)})}
@@ -567,17 +591,27 @@ let dxArm=false,delArm=null,xArm=-1;
 $("dd").onchange=()=>{if($("dm").dataset.auto!=="0"){if($("dd").value)$("dm").value=pk($("dd").value)}};
 $("dm").oninput=()=>{$("dm").dataset.auto="0"};
 $("addd").onclick=()=>{const t=new Date(),tk=ds(t.getFullYear(),t.getMonth(),t.getDate());openDay(pk(tk)===cur.getFullYear()+"-"+pad(cur.getMonth()+1)?tk:ds(cur.getFullYear(),cur.getMonth(),SD()))};
-$("dx").onclick=()=>{if(!dxArm){dxArm=true;$("dx").textContent="本当に削除";return}{const k0=mode==="db"?"debits":"entries";S[k0]=S[k0].filter(x=>x.id!==editId)}save();render();$("mo").classList.remove("on")};
+$("dx").onclick=()=>{if(!dxArm){dxArm=true;$("dx").textContent="本当に削除";return}{const k0=mode==="db"?"debits":"entries";S[k0]=S[k0].filter(x=>x.id!==editId)}save();render();$("mo").classList.remove("on");backScroll()};
 $("list").onchange=e=>{const id=e.target.dataset.mg;if(!id)return;const d=S.debits.find(x=>x.id===id);if(d){d.mg=e.target.checked;save();render()}};
 const tabState={};
 function saveTabPos(){tabState[mode]={cur:new Date(cur.getTime()),view,payF,selDay,y:window.scrollY||document.documentElement.scrollTop||0}}
 $("tabs").onclick=e=>{const b=e.target.closest("button");if(!b)return;const nm=b.dataset.m;if(nm!==mode){saveTabPos();mode=nm;impMsg="";const ts=tabState[mode];if(ts){cur=new Date(ts.cur.getTime());view=ts.view;payF=ts.payF;selDay=ts.selDay}render();const y=ts?ts.y:0;window.scrollTo(0,y);requestAnimationFrame(()=>window.scrollTo(0,y))}else{impMsg="";render()}};
-$("imp").onclick=()=>{$("ifc").checked=false;$("idl").style.display="none";$("idm").value=cur.getFullYear()+"-"+pad(cur.getMonth()+1);$("idn").value="";$("itx").value="";$("ip").textContent="";$("mi").classList.add("on")};
+$("imp").onclick=()=>{$("ifc").checked=false;$("ibd").checked=false;$("idl").style.display="none";$("idm").value=cur.getFullYear()+"-"+pad(cur.getMonth()+1);$("idn").value="";$("itx").value="";$("ip").textContent="";$("mi").classList.add("on")};
 $("ic2").onclick=()=>$("mi").classList.remove("on");
-function cardPlan(r){const used=new Set(),fc=$("ifc").checked;return r.map(x=>{const ex=fc?null:S.debits.find(d=>!used.has(d.id)&&d.date===x.date&&d.store===x.name&&tot0(d)===x.p);if(ex)used.add(ex.id);return{x,ex}})}
-function ipDraw(){const r=parseCard($("itx").value);if(!r.length){$("ip").textContent="読み取れた行はありません";return}const nu=cardPlan(r).filter(q=>q.ex).length;$("ip").textContent=r.length+"件・合計 "+yen(r.reduce((a,x)=>a+x.p,0))+(nu?"・うち"+nu+"件は取り込み済み(更新のみ)":"")}
-$("itx").oninput=ipDraw;$("ifc").onchange=ipDraw;
-$("igo").onclick=()=>{const r=parseCard($("itx").value);if(!r.length)return;const bm=$("idm").value;if(!bm){$("ip").textContent="引落月を選んでください";return}
+function cardPlan(r){const used=new Set(),fc=$("ifc").checked;return r.map(x=>{const ex=fc?null:S.debits.find(d=>!used.has(d.id)&&d.date===x.date&&d.store===x.name&&(r.bank?(d.type==="inc"?1:-1)*tot0(d)===x.p:tot0(d)===x.p));if(ex)used.add(ex.id);return{x,ex}})}
+function bankHist(){const m=new Map();S.debits.slice().sort((a,b)=>a.date<b.date?-1:1).forEach(d=>{const i=d.items[0];if(i&&d.store&&(d.type==="inc"?IL:CL).some(c=>c.n===i.c)&&(d.type!=="inc"||incFlag(i.c)))m.set((d.type==="inc"?"i|":"e|")+d.store,{c:i.c,s:i.s||""})});return m}
+function ipDraw(){const r=parseAny($("itx").value);if(!r.length){$("ip").textContent="読み取れた行はありません";return}const nu=cardPlan(r).filter(q=>q.ex).length;if(r.bank){const o=r.filter(x=>x.p<0),n=r.filter(x=>x.p>0);$("ip").textContent="口座の入出金として "+r.length+"件(出金 "+o.length+"件 "+yen(o.reduce((a,x)=>a-x.p,0))+" ・ 入金 "+n.length+"件 +"+yen(n.reduce((a,x)=>a+x.p,0))+")"+(nu?"・うち"+nu+"件は取り込み済み("+($("ibd").checked?"飛ばします":"集計月だけ更新します")+")":"")+(r.warn?"。"+r.warn:"");const bd=$("ibd").checked,bv=$("idm").value;if(bd){const c={};r.forEach(x=>{const k=+pk(x.date).slice(5)+"月";c[k]=(c[k]||0)+1});$("ip").textContent+="。集計月: "+Object.keys(c).map(k=>k+c[k]+"件").join("・")}else $("ip").textContent+="。すべて"+(bv?+bv.slice(5)+"月":"(引落月を選んでください)")+"に入れます";return}$("ip").textContent=r.length+"件・合計 "+yen(r.reduce((a,x)=>a+x.p,0))+(nu?"・うち"+nu+"件は取り込み済み(更新のみ)":"")}
+$("itx").oninput=ipDraw;$("ifc").onchange=ipDraw;$("ibd").onchange=ipDraw;$("idm").onchange=ipDraw;
+$("igo").onclick=()=>{const r=parseAny($("itx").value);if(!r.length)return;
+  if(r.bank){const bd=$("ibd").checked,bm0=$("idm").value;if(!bd&&!bm0){$("ip").textContent="引落月を選ぶか、「日付から月を決める」にチェックしてください";return}
+    const dn=$("idn").value.trim()||"口座入出金",dc=dcat(),hh=bankHist(),ic=(ICATS.includes("その他収入")&&incFlag("その他収入"))?"その他収入":(ICATS.find(n=>incFlag(n))||ICATS[0]);let add=0,upd=0,skip=0,out=0,inn=0,last=null;
+    cardPlan(r).forEach(({x,ex},i)=>{const bm=bd?pk(x.date):bm0;if(!last)last=bm;
+      if(ex){if(bd)skip++;else{ex.bm=bm;upd++}return}
+      const inc=x.p>0,g=hh.get((inc?"i|":"e|")+x.name);
+      S.debits.push({id:Date.now().toString(36)+i+Math.random().toString(36).slice(2,5),date:x.date,type:inc?"inc":"exp",store:x.name,dname:dn,bm,pay:"bank",items:[{n:"",p:Math.abs(x.p),c:g?g.c:(inc?ic:dc),s:g?g.s:""}]});add++;if(inc)inn++;else out++});
+    save();const bb=last.split("-");cur=new Date(+bb[0],+bb[1]-1,1);
+    impMsg=[add?add+"件を取り込みました(出金"+out+"件・入金"+inn+"件)":"",upd?upd+"件の集計月を"+(+last.slice(5))+"月に更新しました":"",skip?skip+"件は取り込み済みなので飛ばしました":""].filter(Boolean).join("。");$("mi").classList.remove("on");saveTabPos();mode="db";render();return}
+  const bm=$("idm").value;if(!bm){$("ip").textContent="引落月を選んでください";return}
   const dc=dcat(),dn=$("idn").value.trim();let add=0,upd=0;
   cardPlan(r).forEach(({x,ex},i)=>{
     if(ex){ex.bm=bm;if(dn)ex.dname=dn;upd++;return}
@@ -585,44 +619,6 @@ $("igo").onclick=()=>{const r=parseCard($("itx").value);if(!r.length)return;cons
   save();const bb=bm.split("-");cur=new Date(+bb[0],+bb[1]-1,1);
   impMsg=(add?add+"件を取り込み":"")+(add&&upd?"、":"")+(upd?upd+"件を更新":"")+"しました";$("mi").classList.remove("on");saveTabPos();mode="db";render()};
 $("allt").onchange=e=>{if(e.target.id==="ic"){incCard=e.target.checked;render()}};
-let rcMode="new";
-$("cam").onclick=()=>{rcMode="new";$("fl").click()};
-$("pic").onclick=()=>{rcMode="new";$("fl2").click()};
-$("more").onclick=()=>{rcMode="add";$("fl2").click()};
-$("fl").onchange=e=>readRc(e);$("fl2").onchange=e=>readRc(e);
-function loadImg(f){return new Promise((ok,ng)=>{const im=new Image(),u=URL.createObjectURL(f);im.onload=()=>{URL.revokeObjectURL(u);ok(im)};im.onerror=()=>ng(new Error("画像を開けません"));im.src=u})}
-async function tiles(f,cap){const im=await loadImg(f),w=im.width,h=im.height;
-  const mk=(sy,sh,sc)=>new Promise((ok,ng)=>{const c=document.createElement("canvas");c.width=Math.round(w*sc);c.height=Math.round(sh*sc);c.getContext("2d").drawImage(im,0,sy,w,sh,0,0,c.width,c.height);c.toBlob(b=>b?ok(b):ng(new Error("画像を処理できません")),"image/jpeg",.85)});
-  if(h/w<=2.2)return[await mk(0,h,Math.min(1,1800/Math.max(w,h)))];
-  const ov=.12,t0=w*1.7;let n=Math.max(2,Math.ceil((h-ov*t0)/(t0*(1-ov))));n=Math.max(1,Math.min(n,cap||6));
-  const T=h/(n-(n-1)*ov),st=T*(1-ov),sc=Math.min(1,1400/w),out=[];
-  for(let i=0;i<n;i++){const sy=Math.max(0,Math.min(i*st,h-T));out.push(await mk(sy,Math.min(T,h-sy),sc))}
-  return out}
-async function readRc(e){const fs=Array.from(e.target.files||[]);e.target.value="";if(!fs.length)return;
-  const add=rcMode==="add",nt=$("nt");nt.style.display="block";nt.textContent="レシートを読み取り中…(長いレシートは少し時間がかかります)";
-  try{
-    if(typeof claude==="undefined")throw new Error("この画面では写真の読み取りは使えません。「コピーした文字から入力」を使ってください");const sample=await claude.use("sample");if(!sample)throw new Error("この環境では読み取りを使えません。手入力してください");
-    const lim=await sample.limits().catch(()=>null);if(!lim||!lim.images)throw new Error("この環境では画像を送れません。手入力してください");
-    const mx=lim.images.maxCount||4;let blobs=[];
-    for(const f of fs)blobs=blobs.concat(await tiles(f,Math.max(1,Math.floor(mx/fs.length))));
-    if(blobs.length>mx)throw new Error("画像が多すぎます。"+mx+"枚以内にしてください");
-    const prior=add?rows.filter(r=>r.p!==""||r.n):[];
-    const split=blobs.length>1?"長いレシートや複数の写真のため、"+blobs.length+"枚の画像に分けてあります。上から順に並んでいて、隣り合う画像は少し重なっています。重なった部分の品目を二重に数えないでください。\n":"";
-    const cont=add?"すでに次の品目は読み取り済みです: "+JSON.stringify(prior.map(x=>({name:x.n,price:x.p})))+"\nこの画像はレシートの続きです。すでに読み取った品目と重なる部分は返さず、新しい品目だけを返してください。\n":"";
-    const cands=CL.filter(c=>!c.sp).map(c=>c.n+(c.subs.length?"("+c.subs.join("、")+")":"")).join(" / ");
-    const r=await sample.json("これはレシートの写真です。\n"+split+cont+"内容を読み取り、次のJSONだけを返してください。説明やコードブロックは不要です。\n{\"store\":\"店名\",\"date\":\"YYYY-MM-DD(不明ならnull)\",\"total\":レシートに印字されたお支払い合計金額(整数、読み取れなければnull),\"items\":[{\"name\":\"品目名\",\"price\":税込の金額(整数),\"category\":\"大項目\",\"sub\":\"小項目(合うものがなければnull)\"}]}\n項目は次の候補から選んでください(大項目(小項目)): "+cands+"\n値引きは負の金額の品目にしてください。小計・合計・お預り・お釣り・ポイント・消費税の行は品目に含めないでください。読めない部分は推測せず省いてください。",{images:blobs,modelTier:"default"});
-    if(!r||!Array.isArray(r.items))throw new Error("読み取れませんでした");
-    const nr=r.items.map(i=>{const c=CATS.includes(i.category)&&!isSp(i.category)?i.category:dcat(),l=CL.find(x=>x.n===c);return{n:i.name||"",p:Math.round(+i.price||0),c,s:l&&l.subs.includes(i.sub)?i.sub:""}});
-    rows=add?prior.concat(nr):nr;if(!rows.length)rows=[{n:"",p:"",c:c0()}];
-    if(r.store&&(!add||!$("sh").value))$("sh").value=r.store;
-    const sum=rows.reduce((a,x)=>a+(+x.p||0),0);let msg="読み取り完了。";
-    if(typeof r.total==="number"&&r.total>0)msg+=sum===r.total?"品目の合計がレシートの合計("+yen(r.total)+")と一致しました。":"品目の合計("+yen(sum)+")がレシートの合計("+yen(r.total)+")と違います(差 "+yen(r.total-sum)+")。読み落としや値引きの可能性があります。続きがあれば「続きを追加」で読み取れます。";
-    else msg+="金額と項目を確認してから保存してください。";
-    if(r.date&&r.date!==selDay)msg+=" レシートの日付は "+r.date+" です(今は "+selDay+" に入力中)。";
-    nt.textContent=msg;$("more").style.display="";drawRows();
-  }catch(err){nt.textContent="読み取りに失敗: "+(err&&err.message||"もう一度撮影するか手入力してください")}
-}
-
 function parseRcText(raw){
   const SK=/小計|合計|お預|預り|預かり|お釣|釣銭|釣り|ポイント|ﾎﾟｲﾝﾄ|消費税|内税|外税|税込|対象|税率|電話|TEL|領収|レシート|担当|登録番号|責任者|点数|買上|クレジット|カード|現金|ありがとう|お越し|会員|レジ|^No|^NO|^#/i;
   const DT=/(\d{4})\s*[\/年.\-]\s*(\d{1,2})\s*[\/月.\-]\s*(\d{1,2})/,TEL=/\d{2,4}-\d{2,4}-\d{3,4}/;
@@ -654,9 +650,8 @@ function histCat(){const m=new Map();S.entries.concat(S.debits).slice().sort((a,
 let cpUrl=null;
 function cpClose(){if(cpUrl){URL.revokeObjectURL(cpUrl);cpUrl=null}$("cpi").removeAttribute("src");$("cpw").style.display="none"}
 function cpShow(f){if(!f)return;if(cpUrl)URL.revokeObjectURL(cpUrl);cpUrl=URL.createObjectURL(f);$("cpi").src=cpUrl;$("cpw").style.display=""}
-$("cpc").onclick=()=>{$("cpf").value="";$("cpf").click()};$("cpp").onclick=()=>{$("cpl").value="";$("cpl").click()};
-$("cpf").onchange=e=>cpShow(e.target.files[0]);$("cpl").onchange=e=>cpShow(e.target.files[0]);$("cpx").onclick=cpClose;
-$("txb").onclick=()=>{const w=$("txw");w.style.display=w.style.display==="none"?"":"none";if(w.style.display==="")$("txa").focus()};
+$("cpc").onclick=()=>{$("cpf").value="";$("cpf").click()};
+$("cpf").onchange=e=>cpShow(e.target.files[0]);$("cpx").onclick=cpClose;
 $("txg").onclick=()=>{const r=parseRcText($("txa").value),nt=$("nt");nt.style.display="block";
   if(!r.items.length){nt.textContent="品目と金額を読み取れませんでした。貼り付けた文字を確認してください";return}
   const h=histCat(),prior=rows.filter(x=>x.p!==""||x.n),nr=r.items.map(i=>{const g=h.get(i.n),c=g?g.c:c0(),l=CL.find(x=>x.n===c);return{n:i.n,p:i.p,c,s:g&&l&&l.subs.includes(g.s)?g.s:""}});
@@ -664,7 +659,7 @@ $("txg").onclick=()=>{const r=parseRcText($("txa").value),nt=$("nt");nt.style.di
   const sum=rows.reduce((a,x)=>a+(+x.p||0),0);let msg=nr.length+"品目を入力しました。大項目は過去の入力から推定し、初めての品目は「"+c0()+"」にしています。";
   if(r.total!=null)msg+=sum===r.total?"合計がレシートの合計("+yen(r.total)+")と一致しました。":"品目の合計("+yen(sum)+")がレシートの合計("+yen(r.total)+")と違います(税の行や読み落としの可能性)。";
   if(r.date&&r.date!==selDay)msg+=" レシートの日付は "+r.date+" です(今は "+selDay+" に入力中)。";
-  nt.textContent=msg;$("txa").value="";$("txw").style.display="none";cpClose();drawRows()};
+  nt.textContent=msg;$("txa").value="";cpClose();drawRows()};
 function goEntry(v){const i=v.indexOf(":"),l=v.slice(0,i),id=v.slice(i+1);saveTabPos();mode=l==="d"?"db":"rc";view="m";impMsg="";{const en=(l==="d"?S.debits:S.entries).find(x=>x.id===id);if(en){if(l==="d")foldDn.delete(en.dname||"");foldDay.delete(en.date);const kk=(l==="d"?bmOf(en):pk(en.date)).split("-");cur=new Date(+kk[0],+kk[1]-1,1)}}render();
   const el=Array.from($("list").querySelectorAll("[data-g]")).find(r=>r.dataset.g.split(",").includes(id));
   if(el){el.classList.add("hl");el.scrollIntoView({block:"center",behavior:"smooth"});setTimeout(()=>el.classList.remove("hl"),3500)}else window.scrollTo(0,0)}
@@ -810,7 +805,6 @@ $("imr").onclick=()=>{const D=parseBk();if(!D)return;
   if(!armR){armR=true;$("imr").textContent="本当に置き換える(いまのデータは消えます)";return}
   S={opening:D.opening||0,entries:D.entries,debits:D.debits};["cats","icats","startDay","icv","bal"].forEach(q=>{if(D[q]!=null)S[q]=D[q]});
   armR=false;$("imr").textContent="全て置き換えて読み込む";save();render();$("imm2").textContent="置き換えました(レシート"+S.entries.length+"件、口座"+S.debits.length+"件)"};
-if(typeof claude==="undefined")$("camrow").style.display="none";
 render();
 </script>
 </body>
