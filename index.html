@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="家計簿"><meta name="theme-color" content="#f6f5f1">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
 <title>家計簿</title>
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <style>
@@ -21,17 +23,17 @@ h2{font-size:15px;margin:18px 0 8px;color:var(--mu)}
 #bd{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px}
 #opn{white-space:nowrap;padding:6px 10px}
 button,select,input{font:inherit;color:var(--tx)}
-button{background:var(--sf);border:1px solid var(--bd);border-radius:8px;padding:6px 12px;cursor:pointer}
+button{background:var(--sf);border:1px solid var(--bd);border-radius:8px;padding:6px 12px;min-height:36px;cursor:pointer}
 button.p{background:var(--ac);color:#fff;border-color:var(--ac)}
 button.d{color:var(--rd)}
 input,select{background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:7px 8px;width:100%}
-.nav{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:4px;margin:0}
+.nav{display:flex;flex-wrap:nowrap;justify-content:space-between;align-items:center;gap:4px;margin:0}
 .nav b{font-size:18px}
 .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
 .dw{text-align:center;font-size:12px;color:var(--mu)}
 .day{min-height:64px;background:var(--sf);border:1px solid var(--bd);border-radius:8px;padding:3px;font-size:12px;text-align:left;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
 .day.t{border-color:var(--ac);border-width:2px}
-.day .e{color:var(--rd)}.day .i{color:var(--ac)}.day .e,.day .i{font-size:13px;font-weight:700;line-height:1.25;white-space:nowrap}
+.day .e{color:var(--tx)}.day .i{color:var(--ac)}.day .e,.day .i{font-size:13px;font-weight:700;line-height:1.25;white-space:nowrap}
 .row{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-bottom:1px solid var(--bd)}
 .row:last-child{border:0}
 .bar{height:8px;background:var(--ac2);border-radius:4px;margin-top:3px}.bar i{display:block;height:100%;background:var(--ac);border-radius:4px}
@@ -42,16 +44,16 @@ input,select{background:var(--bg);border:1px solid var(--bd);border-radius:8px;p
 .it button{padding:2px}
 #its input,#its select{padding:4px 6px}
 #its .it{gap:3px}
-#its button{padding:2px 2px;font-size:13px}
-.it5,.it4{display:grid;gap:3px;margin-bottom:3px;align-items:center}
-.it5{grid-template-columns:minmax(50px,1.2fr) 88px minmax(52px,1fr) minmax(52px,1fr) 32px}
-.it4{grid-template-columns:minmax(40px,.8fr) minmax(40px,.8fr) 92px 34px}
-#its input,#its select{padding:4px 5px;font-size:14px;min-width:0}
-#its select{font-size:12px;padding:4px 2px}
+#its button{padding:4px 2px;font-size:14px}
+.it5,.it4{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 44px;gap:6px;align-items:center;padding-bottom:8px;margin-bottom:8px;border-bottom:1px dashed var(--bd)}
+#its>div:last-child{border-bottom:0;margin-bottom:2px}
+.it5>:nth-child(1){grid-area:1/1}.it5>:nth-child(2){grid-area:1/2}.it5>:nth-child(5){grid-area:1/3}.it5>:nth-child(3){grid-area:2/1}.it5>:nth-child(4){grid-area:2/2/3/4}
+.it4>:nth-child(1){grid-area:1/1}.it4>:nth-child(2){grid-area:1/2/2/4}.it4>:nth-child(3){grid-area:2/1/3/3}.it4>:nth-child(4){grid-area:2/3}
+#its input,#its select{padding:7px 8px;font-size:16px;min-width:0}
 #bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;background:var(--bg);padding:6px 0 4px;margin:0 0 8px;border-bottom:1px solid var(--bd)}
-#tabs{margin:0 0 6px}
-#vw{margin:0;flex:0 0 auto}#vw button{flex:none;padding:9px 26px;min-width:72px;font-size:16px}
-#td{padding:9px 16px;font-size:15px;font-weight:700}
+#tabs{margin:0 0 4px}#tabs button{padding:5px 8px}
+#vw{margin:0;flex:0 0 auto;gap:2px}#vw button{flex:none;padding:5px 9px;min-width:0;font-size:14px}
+#td{padding:5px 10px;font-size:14px;font-weight:700}
 .nav>button{padding:4px 9px}#ymw{min-width:0;display:flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap}#ymw select{padding:3px 4px}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
 .row,[data-day]{scroll-margin-top:70px}
@@ -59,8 +61,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .yt{border-collapse:collapse;font-size:14px;white-space:nowrap;min-width:100%}
 .yt .sr th,.yt .sr td{font-size:13px;color:var(--mu);font-weight:400}
 .yt th,.yt td{padding:5px 8px;border-bottom:1px solid var(--bd);text-align:right}
-.yt th:first-child{text-align:left;position:sticky;left:0;background:var(--sf);z-index:1}
-.yt .ts th{text-align:left;background:var(--ac2)}
+.yt th:first-child{text-align:left;position:sticky;left:0;background:var(--sf);z-index:1;min-width:128px;max-width:128px;white-space:normal;overflow-wrap:anywhere}
+.yt .ts th{text-align:left;background:var(--ac2)}.yt .ts td{background:var(--ac2)}
 .yt thead th{position:sticky;top:0;background:var(--sf);z-index:2}
 .yt thead th:first-child{z-index:3}
 .yt .tb th,.yt .tb td,.yt .ty{font-weight:700}
@@ -81,7 +83,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .nsm .op{font-size:18px;color:var(--mu);padding-bottom:3px}
 .day>span:last-child{text-align:right}
 .fh{cursor:pointer;-webkit-user-select:none;user-select:none}
-@media (max-width:430px){.nav #vw{order:-1;flex:1 0 100%}#dbb button{padding:6px 6px;font-size:15px;white-space:nowrap}.day{padding:2px}.day .e,.day .i{font-size:10.5px;letter-spacing:-.2px}.nsm b{font-size:14px}.nsm .big b{font-size:21px}}
+@media (max-width:430px){#dbb button{padding:6px 6px;font-size:15px;white-space:nowrap}.day{padding:2px}.day .e,.day .i{font-size:11px;letter-spacing:-.2px}.nsm b{font-size:14px}.nsm .big b{font-size:21px}}
 input[type=date],input[type=month]{-webkit-appearance:none;appearance:none;display:block;width:100%;min-width:0;max-width:100%;min-height:38px;line-height:1.2;text-align:left}
 input[type=date]::-webkit-date-and-time-value,input[type=month]::-webkit-date-and-time-value{text-align:left;min-width:0}
 .g2>div,#rdw,#ddw>*{min-width:0}
@@ -89,11 +91,14 @@ input[type=date]::-webkit-date-and-time-value,input[type=month]::-webkit-date-an
 #sp>div:first-child{flex:1;min-width:0}
 #pmw{flex:0 0 96px}
 #pm{width:100%}
+#mft{position:sticky;bottom:calc(-8px - env(safe-area-inset-bottom,0px));z-index:5;background:var(--sf);margin:10px -10px -10px;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--bd);border-radius:0 0 14px 14px}
+#undo{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:60;max-width:520px;margin:0 auto;background:#222;color:#fff;border-radius:12px;padding:6px 8px 6px 14px;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 4px 16px rgba(0,0,0,.3)}
+#undo button{background:transparent;color:#8fe0b4;border:0;font-weight:700;padding:6px 10px}
 </style>
 </head>
 <body>
 <div id="bar"><div class="seg" id="tabs"><button data-m="rc" class="on">レシート</button><button data-m="db">口座</button><button data-m="all">合計</button></div>
-<div class="nav" id="nav"><div class="seg" id="vw"><button data-v="m" class="on">月</button><button data-v="y">年</button></div><button id="pv">◀</button><div id="ymw" style="flex:1;text-align:center"><select id="ysel" style="width:auto;font-weight:700;font-size:15px"></select> <select id="msel" style="width:auto;font-weight:700;font-size:15px"></select></div><button id="nx">▶</button><button id="td">今日</button></div></div>
+<div class="nav" id="nav"><button id="pv">◀</button><div id="ymw" style="flex:1;text-align:center"><select id="ysel" style="width:auto;font-weight:700;font-size:15px"></select> <select id="msel" style="width:auto;font-weight:700;font-size:15px"></select></div><button id="nx">▶</button><button id="td">今日</button><div class="seg" id="vw"><button data-v="m" class="on">月</button><button data-v="y">年</button></div></div></div>
 <div class="mu" id="yr" style="font-size:13px;margin:2px 2px 6px;display:none"></div>
 <div class="card bal" id="balc"><span class="mu" id="bl" style="white-space:nowrap">現金の残高</span><b id="bal">¥0</b><span class="mu" id="bd"></span><button id="opn">残高を設定</button></div>
 <div id="dbb" style="display:none;gap:8px;margin:8px 0"><button class="p" id="addd" style="flex:1">＋口座の記録を追加</button><button id="imp" style="flex:1">カード明細を取り込む</button></div>
@@ -131,10 +136,10 @@ input[type=date]::-webkit-date-and-time-value,input[type=month]::-webkit-date-an
 <div class="g2" id="sp"><div><span class="mu" id="sl">店名・メモ</span><div style="display:flex;gap:4px"><input id="sh" autocomplete="off" placeholder="入力 or ▾で履歴から"><button id="shb" type="button" style="padding:2px 10px">▾</button></div></div><div id="pmw"><span class="mu">支払方法</span><select id="pm"><option value="cash">現金</option><option value="other">カード</option><option value="etc">他</option></select></div></div>
 <div id="pmh" class="mu" style="font-size:12px;margin:-4px 0 8px;display:none">カード・他は、現金の残高に影響しません</div>
 <div id="shl" style="display:none;max-height:190px;overflow-y:auto;border:1px solid var(--bd);border-radius:8px;margin:-4px 0 8px;background:var(--sf)"></div>
-<div id="ith" class="it5 mu" style="font-size:12px;margin-bottom:2px"></div>
+<div id="ith" class="mu"></div>
 <div id="its"></div>
 <div style="display:flex;gap:6px"><button id="ad">＋品目を追加</button><button id="rod" type="button">↕ 並べ替え</button></div>
-<div style="display:flex;gap:8px;margin-top:10px;align-items:center"><b id="tt" style="flex:1"></b><button class="d" id="dx" style="display:none">削除</button><button class="p" id="sv">保存</button></div>
+<div id="mft" style="display:flex;gap:8px;align-items:center"><b id="tt" style="flex:1"></b><button class="d" id="dx" style="display:none">削除</button><button class="p" id="sv">保存</button></div>
 </div></div>
 
 <div class="mo" id="mbl"><div class="mb">
@@ -201,6 +206,7 @@ input[type=date]::-webkit-date-and-time-value,input[type=month]::-webkit-date-an
 <div class="mo" id="mx"><div class="mb" style="max-width:340px"><div id="mxt" style="font-weight:700;margin-bottom:10px"></div><div id="mxb" style="display:grid;gap:8px"></div><button id="mxc" style="width:100%;margin-top:10px">やめる</button></div></div>
 <div class="mo" id="mv"><div class="mb"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><b id="mvt"></b><button id="mvc">閉じる</button></div><div id="mvb"></div></div></div>
 
+<div id="undo" style="display:none"><span id="undoM"></span><button id="undoB" type="button">元に戻す</button></div>
 <script>
 let CATS=["食費","外食","日用品","交通","医療","趣味","光熱費","その他"],ICATS=["ATM引き出し","入金","給料","賞与","年金","副収入","その他収入"];
 const DC=CATS.slice(),DI=ICATS.slice();
@@ -266,10 +272,10 @@ function nm(t){return t.normalize("NFKC").replace(/([^ン])-/g,"$1ー")}
 function parseCard(t){const out=[];t.split(/\r?\n/).forEach(l=>{l=l.trim();const m=l.match(/^(\d{4})[\/.-](\d{1,2})[\/.-](\d{1,2})\s+(.+?)\s+(?:本人|家族)\s+\S+\s+(-?[\d,]+)$/);if(m)out.push({date:m[1]+"-"+pad(+m[2])+"-"+pad(+m[3]),name:nm(m[4]),p:parseInt(m[5].replace(/,/g,""),10)})});return out}
 function E(){return mode==="db"?S.debits:S.entries}
 function fixCi(L){let mx=-1;L.forEach(x=>{if(x.ci!=null&&x.ci>mx)mx=x.ci});L.forEach(x=>{if(x.ci==null)x.ci=++mx});return L}
-function cpL(L){return L.map(m=>{const o={n:m.n,subs:m.subs.slice(),ci:m.ci};if(m.inc!==undefined)o.inc=m.inc;if(m.sp)o.sp=true;return o})}
+function cpL(L){return L.map(m=>{const o={n:m.n,subs:m.subs.slice(),ci:m.ci};if(m.inc!==undefined)o.inc=m.inc;if(m.sp)o.sp=true;if(m.b)o.b=m.b;return o})}
 function applyCats(){
   if(!S.entries)S.entries=[];if(!S.debits)S.debits=[];
-  const norm=(a,d)=>(a&&a.length?a:d).map(x=>{if(typeof x==="string")return{n:x,subs:[]};const o={n:x.n,subs:(x.subs||[]).slice()};if(x.ci!=null)o.ci=x.ci;if(x.inc!==undefined)o.inc=x.inc;if(x.sp)o.sp=true;return o});
+  const norm=(a,d)=>(a&&a.length?a:d).map(x=>{if(typeof x==="string")return{n:x,subs:[]};const o={n:x.n,subs:(x.subs||[]).slice()};if(x.ci!=null)o.ci=x.ci;if(x.inc!==undefined)o.inc=x.inc;if(x.sp)o.sp=true;if(x.b>0)o.b=+x.b;return o});
   CL=fixCi(norm(S.cats,DC));IL=fixCi(norm(S.icats,DI));
   if(S.icv!==2){["給料","賞与","年金","副収入"].forEach(n=>{if(!IL.some(x=>x.n===n)){const j=IL.findIndex(x=>x.n==="その他収入");IL.splice(j<0?IL.length:j,0,{n,subs:[]})}});fixCi(IL);S.icv=2;S.icats=cpL(IL)}
   CATS=CL.map(x=>x.n);ICATS=IL.map(x=>x.n)}
@@ -361,13 +367,17 @@ function fillYm(y,m,yv,a0,sd){
   const ys=$("ysel"),key=lo+"-"+hi;if(ys.dataset.r!==key){let h="";for(let i=lo;i<=hi;i++)h+=`<option value="${i}">${i}年</option>`;ys.innerHTML=h;ys.dataset.r=key}ys.value=y;
   const ms=$("msel");if(!ms.options.length)ms.innerHTML=Array.from({length:12},(_,i)=>`<option value="${i}">${i+1}月</option>`).join("");ms.value=m;ms.style.display=yv?"none":"";
   const e1=new Date(y,m+1,sd-1);{const ps=(yv||sd===1)?"":(a0.getMonth()+1)+"/"+a0.getDate()+"〜"+(e1.getMonth()+1)+"/"+e1.getDate();$("yr").textContent=ps?"集計期間 "+ps:"";$("yr").style.display=ps?"":"none"}}
+function barHtml(k,v,mx,tl){const l=CL.find(x=>x.n===k),col=PAL[(l?l.ci:CL.length)%PAL.length],bg=(!tl&&l&&l.b)?l.b:0;
+  if(bg){const r=v/bg,w=Math.min(100,Math.max(0,r*100)),c=r>1?"var(--rd)":r>=.8?"#d9822b":col,rem=bg-v;return `<div class="bar" style="height:6px;margin:3px 0 2px"><i style="width:${w}%;background:${c}"></i></div><div class="mu" style="font-size:12px;margin-bottom:2px;${r>1?"color:var(--rd)":""}">予算 ${n0(bg)}円 ・ ${rem>=0?"残り "+n0(rem)+"円":"超過 "+n0(-rem)+"円"}</div>`}
+  return `<div class="bar" style="height:6px;margin:3px 0 2px"><i style="width:${Math.max(2,Math.min(100,v/mx*100))}%;background:${col}"></i></div>`}
 function sumHtml(by,sb,lb,tot,det,emp,tl){
   const ks=CATS.filter(c=>Object.prototype.hasOwnProperty.call(by,c));Object.keys(by).forEach(c=>{if(!ks.includes(c))ks.push(c)});
   if(!ks.length)return `<span class="mu">${emp||"支出はまだありません"}</span>`;
   const hint=det?'<div class="mu" style="font-size:12px;margin-bottom:6px">小項目を押すと「日付・店舗・レシート/口座」の一覧が出ます。その行を押すと品目と金額が出ます</div>':"";
+  const mxv=Math.max(1,...ks.map(k=>by[k]));
   const lbh=lb?`<div class="mu" style="${LBG}font-size:11px;margin-bottom:2px"><span></span><span style="${LBC}"><span>レシート</span><span>口座</span></span><span></span></div>`:"";
   return hint+lbh+ks.map(k=>{const ss=Object.keys(sb[k]),has=!(ss.length===1&&ss[0]===""),clk=det&&!has,op=clk&&isOpen("c",k,null);
-    return `<div style="margin-bottom:8px"><div class="row"${clk?` data-dk="${dkId("c",k,null)}"`:""} style="${!has&&lb?LBG:""}border:0;padding:0${clk?";cursor:pointer":""}"><span style="min-width:0">${clk?(op?"▾ ":"▸ "):""}${sq("c",k)}${esc(k)}</span>${!has&&lb?lbTxt(lb[k]&&lb[k][""]):""}<b style="white-space:nowrap;text-align:right">${!has&&lb?"":`<span class="mu" style="margin-right:8px;font-weight:400">${tot?Math.round(by[k]/tot*100):0}%</span>`}${yen(by[k])}</b></div>${op?recHtml("c",k,null,det.exp.filter(y=>y.c===k),true,22):""}${subLines(sb[k],k,CL,"c",det,det?det.exp:null,lb?lb[k]:null)}</div>`}).join("")+`<div class="row"><b>${tl||"支出合計"}</b><b>${yen(tot)}</b></div>`}
+    return `<div style="margin-bottom:8px"><div class="row"${clk?` data-dk="${dkId("c",k,null)}"`:""} style="${!has&&lb?LBG:""}border:0;padding:0${clk?";cursor:pointer":""}"><span style="min-width:0">${clk?(op?"▾ ":"▸ "):""}${sq("c",k)}${esc(k)}</span>${!has&&lb?lbTxt(lb[k]&&lb[k][""]):""}<b style="white-space:nowrap;text-align:right">${!has&&lb?"":`<span class="mu" style="margin-right:8px;font-weight:400">${tot?Math.round(by[k]/tot*100):0}%</span>`}${yen(by[k])}</b></div>${barHtml(k,by[k],mxv,tl)}${op?recHtml("c",k,null,det.exp.filter(y=>y.c===k),true,22):""}${subLines(sb[k],k,CL,"c",det,det?det.exp:null,lb?lb[k]:null)}</div>`}).join("")+`<div class="row"><b>${tl||"支出合計"}</b><b>${yen(tot)}</b></div>`}
 function incHtml(iby,ti,tn,tx,net,isb,det){
   const ks=ICATS.filter(c=>Object.prototype.hasOwnProperty.call(iby,c));Object.keys(iby).forEach(c=>{if(!ks.includes(c))ks.push(c)});
   let h=ks.length?ks.map(k=>{const op=det&&isOpen("i",k,null);
@@ -387,7 +397,7 @@ function renderYear(base,y){
   ykL=[];const xr=[["項目"].concat(Array.from({length:12},(_,i)=>(i+1)+"月"),["合計","平均"])];
   const xpush=(label,a)=>xr.push([label].concat(a,[sum(a),avg(a)]));
   const row=(label,a,cls,yk)=>`<tr class="${cls||""}"${yk!=null?` data-yk="${yk}" style="cursor:pointer"`:""}><th>${label}</th>${a.map(v=>`<td${v<0?' class="neg"':""}>${fm(v)}</td>`).join("")}<td class="ty${sum(a)<0?" neg":""}">${fm(sum(a))}</td><td class="ty${avg(a)<0?" neg":""}">${fm(avg(a))}</td></tr>`;
-  const sec=t=>{xr.push([t]);return `<tr class="ts"><th colspan="15">${t}</th></tr>`};
+  const sec=t=>{xr.push([t]);return `<tr class="ts"><th>${t}</th><td colspan="14"></td></tr>`};
   const catRows=(kind,order,map,subs)=>ord(order,map).map(c=>{const ss=Object.keys(subs[c]||{}),has=!(ss.length===1&&ss[0]===""),key=JSON.stringify([kind,c]),op=yopen.has(key);
     xpush(c,map[c]);
     const l=(kind==="c"?CL:IL).find(x=>x.n===c),od=l?l.subs:[],rk=x=>x===""?1e9:(od.indexOf(x)<0?1e8:od.indexOf(x)),sorted=ss.slice().sort((p,q)=>rk(p)-rk(q));
@@ -401,7 +411,12 @@ function renderYear(base,y){
   xr.push([]);xr.push(["特別支出を含めた収支"]);xr.push(xr[0].slice());
   const body2=tb("収入合計",ti)+tb("支出合計",tx)+sec("特別支出")+catRows("c",CATS,sp,sps)+tb("特別支出合計",tsp)+tb("収支(特別支出込)",ti.map((v,i)=>v-tx[i]-tsp[i]));
   yearX={y,rows:xr,n:nmon};
-  $("ysum").innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><b>${y}年の合計(レシート+口座)</b><button data-yx="1" style="padding:5px 12px">Excelに出力</button></div><div class="mu" id="yxm" style="font-size:12px;margin:2px 0"></div><div class="mu" style="font-size:12px;margin-bottom:6px">項目名を押すと小項目が開きます。平均は、記録を入力した月(${nmon}か月)で割っています。上の表の支出には特別支出を入れていません</div><div style="overflow:auto;max-height:72vh"><table class="yt"><thead>${head}</thead><tbody>${body}</tbody></table></div><div style="margin-top:16px;padding-top:10px;border-top:1px solid var(--bd)"><b>特別支出を含めた収支</b><div class="mu" style="font-size:12px;margin:2px 0 6px">収入合計 − 支出合計 − 特別支出合計</div><div style="overflow:auto;max-height:72vh"><table class="yt"><thead>${head}</thead><tbody>${body2}</tbody></table></div></div>${tn?`<div class="mu" style="margin-top:6px">現金の出し入れ(収入に含めない): ${sgn(tn)}</div>`:""}`}
+  const keepX=($("ysum").querySelector(".yw")||{}).scrollLeft;
+  $("ysum").innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><b>${y}年の合計(レシート+口座)</b><button data-yx="1" style="padding:5px 12px">Excelに出力</button></div><div class="mu" id="yxm" style="font-size:12px;margin:2px 0"></div><div class="mu" style="font-size:12px;margin-bottom:6px">項目名を押すと小項目が開きます。平均は、記録を入力した月(${nmon}か月)で割っています。上の表の支出には特別支出を入れていません</div><div class="yw" style="overflow:auto;max-height:72vh"><table class="yt"><thead>${head}</thead><tbody>${body}</tbody></table></div><div style="margin-top:16px;padding-top:10px;border-top:1px solid var(--bd)"><b>特別支出を含めた収支</b><div class="mu" style="font-size:12px;margin:2px 0 6px">収入合計 − 支出合計 − 特別支出合計</div><div class="yw" style="overflow:auto;max-height:72vh"><table class="yt"><thead>${head}</thead><tbody>${body2}</tbody></table></div></div>${tn?`<div class="mu" style="margin-top:6px">現金の出し入れ(収入に含めない): ${sgn(tn)}</div>`:""}`;
+  {const ws=[...$("ysum").querySelectorAll(".yw")];let tg=-1;for(let i=11;i>=0;i--)if(has[i]){tg=i;break}if(tg<0)tg=0;
+   ws.forEach(w=>{if(keepX)w.scrollLeft=keepX;else{const th=w.querySelector("thead th:nth-child("+(tg+2)+")");if(th){w.scrollLeft=0;const dd=th.getBoundingClientRect().right-w.getBoundingClientRect().right+1;if(dd>0)w.scrollLeft=dd}}});
+   let lk=false;ws.forEach(a=>a.addEventListener("scroll",()=>{if(lk)return;lk=true;ws.forEach(b=>{if(b!==a)b.scrollLeft=a.scrollLeft});requestAnimationFrame(()=>{lk=false})}))}
+}
 async function exportYear(){const m=$("yxm");if(!yearX)return;const{y,rows}=yearX;let data,name;
   try{
     if(typeof XLSX!=="undefined"){const ws=XLSX.utils.aoa_to_sheet(rows);ws["!cols"]=[{wch:22}].concat(Array(14).fill({wch:10}));
@@ -434,7 +449,7 @@ function render(){
     for(let i=0;i<nd;i++){const dt=new Date(y,m,sd+i),k=ds(dt.getFullYear(),dt.getMonth(),dt.getDate()),es=E().filter(e=>e.date===k);
       const xs=es.filter(e=>e.type==="exp"),is=es.filter(e=>e.type==="inc"),ex=xs.reduce((a,e)=>a+tot0(e),0),inc=is.reduce((a,e)=>a+tot0(e),0);
       const lab=(i===0||dt.getDate()===1)?(dt.getMonth()+1)+"/"+dt.getDate():dt.getDate();
-      h+=`<button class="day${k===tk?" t":""}" data-d="${k}"><span${isRed(k)?' style="color:var(--rd)"':""}>${lab}</span><span>${is.length?`<div class="i">${inc<0?"-":"+"}${cf(inc)}</div>`:""}${xs.length?`<div class="e">${ex<0?"+":"-"}${cf(ex)}</div>`:""}</span></button>`}
+      h+=`<button class="day${k===tk?" t":""}" data-d="${k}"><span${isRed(k)?' style="color:var(--rd)"':""}>${lab}</span><span>${is.length?`<div class="i">${inc<0?"-":"+"}${cf(inc)}</div>`:""}${xs.length?(ex<0?`<div class="i">+${cf(ex)}</div>`:`<div class="e">${cf(ex)}</div>`):""}</span></button>`}
     $("cal").innerHTML=h}
   const me=base.filter(e=>keyOf(e)===pre).sort((a,b)=>a.date<b.date?-1:a.date>b.date?1:(a.ts||0)-(b.ts||0));
   const by={},sb={},lb={},lt={r:0,d:0},iby={},isb={},byS={},sbS={};let tot=0,ti=0,tn=0,tsp=0;
@@ -498,7 +513,7 @@ function drawDay(){const es=E().filter(e=>e.date===selDay);
 $("dl").onclick=e=>{const ed=e.target.dataset.ed,del=e.target.dataset.del;
   if(ed){load(E().find(x=>x.id===ed))}
   if(del){if(delArm!==del){delArm=del;drawDay();return}delArm=null;{const k0=mode==="db"?"debits":"entries";S[k0]=S[k0].filter(x=>x.id!==del)}save();drawDay();render()}};
-function load(en){editId=en.id;hlIds=[];$("rd").value=en.date;{const base=($("mt").textContent||"").split(" ・ ")[0];$("mt").textContent=base+" ・ "+(en.store||en.dname||"店名なし")}$("dx").style.display="";$("dx").textContent="削除";dxArm=false;xArm=-1;if(mode==="db"){$("dd").value=en.date;$("dn").value=en.dname||"";$("dm").value=bmOf(en);$("dm").dataset.auto="0"}$("sh").value=en.store||"";$("pm").value=en.pay;rows=en.items.map(i=>({...i}));setType(en.type);drawDay();}
+function load(en){editId=en.id;hlIds=[];$("rd").value=en.date;{const base=($("mt").textContent||"").split(" ・ ")[0];$("mt").textContent=base+" ・ "+(en.store||en.dname||"店名なし")}$("dx").style.display="";$("dx").textContent="削除";dxArm=false;xArm=-1;if(mode==="db"){$("dd").value=en.date;$("dn").value=en.dname||"";$("dm").value=bmOf(en);$("dm").dataset.auto="0"}$("sh").value=en.store||"";$("pm").value=en.pay;rows=en.items.map(i=>({...i,cs:true}));setType(en.type);drawDay();}
 function amt(r,i){return `<span style="display:flex;align-items:center;gap:3px"><input data-i="${i}" data-f="p" type="text" inputmode="${fxMode?"text":"numeric"}" autocomplete="off" value="${fmtN(r.p)}" placeholder="金額" style="min-width:0;text-align:right"><span>円</span></span>`}
 function xb(i){return xArm===i?`<button class="d" data-x="${i}" style="font-size:11px;padding:2px 0">消す?</button>`:`<button data-x="${i}">×</button>`}
 function subsOf(c){const l=(type==="inc"?IL:CL).find(x=>x.n===c);return l?l.subs:[]}
@@ -506,7 +521,7 @@ function drawRows(){const inc=type==="inc",cs=inc?ICATS:CATS;
   $("pmh").style.display=($("pmw").style.display!=="none"&&$("pm").value!=="cash")?"":"none";
   $("rod").textContent=rowOrd?"✔ 並べ替えを終わる":"↕ 並べ替え";$("rod").className=rowOrd?"p":"";$("ith").style.display=rowOrd?"none":"";
   if(rowOrd){$("its").innerHTML=rows.map((r,i)=>`<div class="row" style="border:0;padding:3px 0;gap:6px;align-items:center"><span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(inc?(r.c+(r.s?"・"+r.s:"")):(r.n||"(品目名なし)"))}</span><span class="mu" style="white-space:nowrap">${fmtN(r.p)}円</span><button type="button" data-up="${i}" ${i?"":"disabled"} style="padding:6px 14px">▲</button><button type="button" data-dn="${i}" ${i<rows.length-1?"":"disabled"} style="padding:6px 14px">▼</button></div>`).join("");tot();return}
-  const h=$("ith");h.className=(inc?"it4":"it5")+" mu";h.innerHTML=inc?"<span>大項目</span><span>小項目</span><span>金額"+fxB()+"</span><span></span>":"<span>品目</span><span>金額"+fxB()+"</span><span>大項目</span><span>小項目</span><span></span>";
+  const h=$("ith");h.className="mu";h.style.cssText="display:flex;justify-content:space-between;align-items:center;font-size:12px;margin-bottom:6px";h.innerHTML="<span>金額の欄は計算式(例 100+250)も使えます</span>"+fxB();
   const cSel=(r,i)=>{const op=c=>`<option${c===r.c?" selected":""}>${esc(c)}</option>`;let o;if(inc)o=cs.map(op).join("");else{const nn=CL.filter(x=>!x.sp).map(x=>x.n),ss=CL.filter(x=>x.sp).map(x=>x.n);o=nn.map(op).join("")+(ss.length?`<optgroup label="特別支出">${ss.map(op).join("")}</optgroup>`:"")}return `<select data-i="${i}" data-f="c">${o}</select>`};
   const sSel=(r,i)=>`<select data-i="${i}" data-f="s"><option value="">なし</option>${subsOf(r.c).map(x=>`<option${x===r.s?" selected":""}>${esc(x)}</option>`).join("")}</select>`;
   $("its").innerHTML=rows.map((r,i)=>inc?`<div class="it4">${cSel(r,i)}${sSel(r,i)}${amt(r,i)}${xb(i)}</div>`:`<div class="it5"><input data-i="${i}" data-f="n" value="${esc(r.n)}" placeholder="品目">${amt(r,i)}${cSel(r,i)}${sSel(r,i)}${xb(i)}</div>`).join("");
@@ -519,16 +534,18 @@ function calc(src){const t=String(src).replace(/\s+/g,"").replace(/,/g,"");if(!/
   const expr=()=>{let v=term();while(t[i]==="+"||t[i]==="-"){const o=t[i++],r=term();v=o==="+"?v+r:v-r}return v};
   try{const v=expr();return i===t.length&&isFinite(v)?v:null}catch(e){return null}}
 let fxMode=false,rowOrd=false;
-function fxB(){return `<button type="button" id="fxb" class="${fxMode?"p":""}" title="計算式を入力するときのキーボード" style="padding:0 6px;font-size:11px;margin-left:3px">式</button>`}
+function fxB(){return `<button type="button" id="fxb" class="${fxMode?"p":""}" title="計算式を入力するときのキーボード" style="padding:2px 12px;min-height:0;font-size:12px;margin-left:3px">式</button>`}
 function isFormula(r){return /[+*/()]/.test(r)||/\d\s*-/.test(r)}
 function fmtN(p){return p===""||p==null||isNaN(+p)?"":Number(p).toLocaleString("en-US")}
 $("its").oninput=e=>{const t=e.target,i=t.dataset.i;if(i===undefined)return;const f=t.dataset.f;
   if(f==="p"){const raw0=t.value.normalize("NFKC").replace(/×/g,"*").replace(/÷/g,"/");if(isFormula(raw0)){const v=calc(raw0);rows[i].p=v==null?"":Math.round(v);tot();return}const raw=raw0,neg=/^\s*[-−]/.test(raw),dg=raw.replace(/\D/g,""),nv=(neg?"-":"")+(dg?Number(dg).toLocaleString("en-US"):"");
     if(nv!==t.value){const pos=t.selectionStart==null?t.value.length:t.selectionStart,before=t.value.slice(0,pos).normalize("NFKC").replace(/\D/g,"").length;t.value=nv;let np=0,c=0;while(np<nv.length&&c<before){if(/\d/.test(nv[np]))c++;np++}try{t.setSelectionRange(np,np)}catch(er){}}
     rows[i].p=dg?(neg?-1:1)*Number(dg):"";tot();return}
-  rows[i][f]=t.value;if(f==="c"){rows[i].s="";drawRows();return}tot()};
+  rows[i][f]=t.value;if(f==="c"||f==="s")rows[i].cs=true;if(f==="c"){rows[i].s="";drawRows();return}tot()};
 $("its").addEventListener("change",e=>{const t=e.target;if(t.dataset.f!=="p")return;const i=+t.dataset.i,raw0=t.value.normalize("NFKC").replace(/×/g,"*").replace(/÷/g,"/");if(!isFormula(raw0))return;
   const v=calc(raw0);if(v==null){t.title="式を計算できません";t.style.outline="1px solid var(--rd)";return}rows[i].p=Math.round(v);t.value=fmtN(rows[i].p);t.style.outline="";t.title="";tot()});
+function refreshSel(i){const row=$("its").children[i];if(!row)return;const cs=row.querySelector('select[data-f="c"]'),ss=row.querySelector('select[data-f="s"]');if(cs)cs.value=rows[i].c;if(ss)ss.innerHTML='<option value="">なし</option>'+subsOf(rows[i].c).map(x=>`<option${x===rows[i].s?" selected":""}>${esc(x)}</option>`).join("")}
+$("its").addEventListener("change",e=>{const t=e.target;if(t.dataset.f!=="n"||type==="inc")return;const i=+t.dataset.i,r=rows[i],nv=(t.value||"").trim();if(!r||!nv||r.cs||r.s||r.c!==c0())return;const g=histCat().get(nv);if(!g||!CATS.includes(g.c))return;r.c=g.c;const l=CL.find(x=>x.n===g.c);r.s=g.s&&l&&l.subs.includes(g.s)?g.s:"";refreshSel(i)});
 $("ith").addEventListener("click",e=>{if(e.target.id==="fxb"){fxMode=!fxMode;drawRows()}});
 $("its").onclick=e=>{const d=e.target.dataset;if(d.up!==undefined||d.dn!==undefined){const i=+(d.up!==undefined?d.up:d.dn),j=d.up!==undefined?i-1:i+1;if(j>=0&&j<rows.length){const q=rows[i];rows[i]=rows[j];rows[j]=q;xArm=-1;drawRows()}return}const x=e.target.dataset.x;if(x===undefined)return;const i=+x,r=rows[i],blank=r&&!String(r.n||"").trim()&&(r.p===""||r.p==null);
   if(!blank&&xArm!==i){xArm=i;drawRows();return}
@@ -553,6 +570,7 @@ function cdraw(){
   const sec=(L,k,sp)=>{const idx=L.map((m,a)=>a).filter(a=>!!L[a].sp===!!sp);
   return idx.map((a,pos)=>{const m=L[a];
     let h=`<div style="margin:5px 0 2px;padding:4px 6px;border:1px solid var(--bd);border-radius:8px"><div class="it2" style="grid-template-columns:auto 1fr 34px 34px 56px;align-items:center"><span>${sq(k,m.n)}</span><input data-k="${k}" data-a="${a}" value="${esc(m.n)}" style="font-weight:700">${arrows(k,a,pos,idx.length,"data-mv")}<button class="d" data-k="${k}" data-dm="${a}" ${(!sp&&idx.length<2)?"disabled":""}>削除</button></div>`;
+    if(k==="c"&&!sp)h+=`<div class="it2" style="margin:0 0 3px 14px;grid-template-columns:auto 1fr auto;align-items:center"><span class="mu">月の予算</span><input data-k="c" data-a="${a}" data-bg="1" type="text" inputmode="numeric" placeholder="なし" value="${m.b?Number(m.b).toLocaleString("en-US"):""}" style="text-align:right"><span class="mu">円</span></div>`;
     if(k==="i")h+=`<label style="font-size:13px;display:block;margin:0 0 2px"><input type="checkbox" data-k="i" data-a="${a}" data-fl="1" ${(m.inc!==undefined?m.inc:!MOVE.includes(m.n))?"checked":""} style="width:auto;margin-right:4px">収入として集計する</label>`;
     if(P(k,a,"m")){let n=0;eachItem(k,i=>{if(i.c===m.n)n++});
       const dsts=L.filter(x=>x!==m).sort((p,q)=>(!!p.sp===!!m.sp?0:1)-(!!q.sp===!!m.sp?0:1));
@@ -566,6 +584,7 @@ $("ce").onclick=()=>{pend=null;cdraw();$("mc").classList.add("on")};
 $("cc").onclick=()=>$("mc").classList.remove("on");
 $("cb").onchange=e=>{const t=e.target,k=t.dataset.k,a=t.dataset.a;if(a===undefined||t.id)return;const L=k==="c"?CL:IL,m=L[+a];
   if(t.dataset.fl){m.inc=t.checked;cstore();return}
+  if(t.dataset.bg){const v=parseInt(String(t.value).normalize("NFKC").replace(/\D/g,""),10);if(v>0)m.b=v;else delete m.b;cstore();return}
   const nw=t.value.trim();
   if(t.dataset.b===undefined){
     if(!nw||(nw!==m.n&&L.some(x=>x.n===nw))){cdraw();return}
@@ -591,7 +610,7 @@ let dxArm=false,delArm=null,xArm=-1;
 $("dd").onchange=()=>{if($("dm").dataset.auto!=="0"){if($("dd").value)$("dm").value=pk($("dd").value)}};
 $("dm").oninput=()=>{$("dm").dataset.auto="0"};
 $("addd").onclick=()=>{const t=new Date(),tk=ds(t.getFullYear(),t.getMonth(),t.getDate());openDay(pk(tk)===cur.getFullYear()+"-"+pad(cur.getMonth()+1)?tk:ds(cur.getFullYear(),cur.getMonth(),SD()))};
-$("dx").onclick=()=>{if(!dxArm){dxArm=true;$("dx").textContent="本当に削除";return}{const k0=mode==="db"?"debits":"entries";S[k0]=S[k0].filter(x=>x.id!==editId)}save();render();$("mo").classList.remove("on");backScroll()};
+$("dx").onclick=()=>{if(!dxArm){dxArm=true;$("dx").textContent="本当に削除";return}const snap=snapData();{const k0=mode==="db"?"debits":"entries";S[k0]=S[k0].filter(x=>x.id!==editId)}save();render();$("mo").classList.remove("on");backScroll();showUndo("削除しました",snap)};
 $("list").onchange=e=>{const id=e.target.dataset.mg;if(!id)return;const d=S.debits.find(x=>x.id===id);if(d){d.mg=e.target.checked;save();render()}};
 const tabState={};
 function saveTabPos(){tabState[mode]={cur:new Date(cur.getTime()),view,payF,selDay,y:window.scrollY||document.documentElement.scrollTop||0}}
@@ -682,9 +701,13 @@ let chooseOpts=[];
 function choose(title,opts){$("mxt").textContent=title;$("mxb").innerHTML=opts.map((o,i)=>`<button class="${o.p?"p":o.d?"d":""}" data-ox="${i}" style="padding:10px">${o.label}</button>`).join("");chooseOpts=opts;$("mx").classList.add("on")}
 $("mxb").onclick=e=>{const i=e.target.dataset.ox;if(i===undefined)return;$("mx").classList.remove("on");chooseOpts[+i].fn()};
 $("mxc").onclick=()=>$("mx").classList.remove("on");
+let undoT=null,undoSnap=null;
+function snapData(){return JSON.stringify({e:S.entries,d:S.debits})}
+function showUndo(msg,snap){undoSnap=snap;$("undoM").textContent=msg;$("undo").style.display="flex";clearTimeout(undoT);undoT=setTimeout(()=>{$("undo").style.display="none";undoSnap=null},8000)}
+$("undoB").onclick=()=>{if(!undoSnap)return;const o=JSON.parse(undoSnap);S.entries=o.e;S.debits=o.d;undoSnap=null;clearTimeout(undoT);$("undo").style.display="none";save();render()};
 function bulkDel(k){const pre=cur.getFullYear()+"-"+pad(cur.getMonth()+1),L=S.debits.filter(d=>bmOf(d)===pre&&(d.dname||"")===k);if(!L.length)return;
   const ex=L.filter(d=>d.type!=="inc"),tt=ex.reduce((a,d)=>a+tot0(d),0);
-  choose("「"+(k||"引落名なし")+"」の"+L.length+"件"+(ex.length?"(支出 "+yen(tt)+")":"")+"をまとめて削除します。元に戻せません",[{label:"削除する",d:1,fn:()=>{L.forEach(d=>unlink(d));const ids=new Set(L.map(d=>d.id));S.debits=S.debits.filter(d=>!ids.has(d.id));foldDn.delete(k);save();render()}}])}
+  choose("「"+(k||"引落名なし")+"」の"+L.length+"件"+(ex.length?"(支出 "+yen(tt)+")":"")+"をまとめて削除します。元に戻せません",[{label:"削除する",d:1,fn:()=>{const snap=snapData();L.forEach(d=>unlink(d));const ids=new Set(L.map(d=>d.id));S.debits=S.debits.filter(d=>!ids.has(d.id));foldDn.delete(k);save();render();showUndo(L.length+"件を削除しました",snap)}}])}
 function entryBlock(en,btns){const t=tot0(en),pay=payLabel(en.pay);
   return `<div class="card" style="margin-bottom:8px;padding:8px"><div class="row" style="border:0;padding:0"><b>${esc(en.store||en.dname||(en.type==="inc"?"入金":"支出"))}</b><b>${en.type==="inc"?sgn(t):yen(t)}</b></div><div class="mu" style="font-size:12px">${+en.date.slice(5,7)}/${+en.date.slice(8)} ・ ${en.items.length}品目 ・ ${pay}</div>${en.items.map(i=>`<div class="row" style="border:0;padding:3px 0 1px"><span>${esc(i.n||"(品目名なし)")}</span><span>${yen(i.p)}</span></div><div class="mu" style="font-size:12px;margin-bottom:2px">${sq(en.type==="inc"?"i":"c",i.c)}${esc(i.c)}${i.s?" ・ "+esc(i.s):""}</div>`).join("")}<div style="margin-top:6px">${btns}</div></div>`}
 function showEntries(title,list,mkBtn){$("mvt").textContent=title;$("mvb").innerHTML=list.length?list.map(en=>entryBlock(en,mkBtn(en))).join(""):'<span class="mu">記録はありません</span>';$("mv").classList.add("on")}
@@ -797,7 +820,7 @@ $("imm").onclick=()=>{const D=parseBk();if(!D)return;let add=0,upd=0;
   mg(S.entries,D.entries);mg(S.debits,D.debits);
   const mc=(Lc,Dn)=>(Dn||[]).forEach(x=>{const nx=typeof x==="string"?{n:x,subs:[]}:x,m=Lc.find(y=>y.n===nx.n);if(!m)Lc.push({n:nx.n,subs:(nx.subs||[]).slice(),...(nx.sp?{sp:true}:{})});else(nx.subs||[]).forEach(z=>{if(!m.subs.includes(z))m.subs.push(z)})});
   if($("imc").checked&&(D.cats||D.icats)){const used=new Set();S.entries.concat(S.debits).forEach(e=>e.items.forEach(i=>{used.add(i.c);used.add(i.c+"\u0000"+(i.s||""))}));
-    const sy=(Lc,Dn)=>{if(!Array.isArray(Dn)||!Dn.length)return;const nx=Dn.map(x=>typeof x==="string"?{n:x,subs:[]}:{n:x.n,subs:(x.subs||[]).slice(),...(x.ci!=null?{ci:x.ci}:{}),...(x.inc!==undefined?{inc:x.inc}:{}),...(x.sp?{sp:true}:{})});
+    const sy=(Lc,Dn)=>{if(!Array.isArray(Dn)||!Dn.length)return;const nx=Dn.map(x=>typeof x==="string"?{n:x,subs:[]}:{n:x.n,subs:(x.subs||[]).slice(),...(x.ci!=null?{ci:x.ci}:{}),...(x.inc!==undefined?{inc:x.inc}:{}),...(x.sp?{sp:true}:{}),...(x.b>0?{b:+x.b}:{})});
       Lc.forEach(m=>{const q=nx.find(y=>y.n===m.n);if(q)m.subs.forEach(z=>{if(used.has(m.n+"\u0000"+z)&&!q.subs.includes(z))q.subs.push(z)});else if(used.has(m.n))nx.push(m)});Lc.length=0;nx.forEach(x=>Lc.push(x))};
     sy(CL,D.cats);sy(IL,D.icats)}else{mc(CL,D.cats);mc(IL,D.icats)}cstore();
   $("imm2").textContent=add+"件を追加、"+upd+"件を上書きしました"};
