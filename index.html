@@ -736,6 +736,7 @@ function sugInit(inp,btn,list,items){const nz=t=>t.normalize("NFKC").toLowerCase
   document.addEventListener("click",e=>{if(!e.target.closest("#"+inp.id+",#"+btn.id+",#"+list.id))list.style.display="none"})}
 sugInit($("idn"),$("idb"),$("idl"),dnItems);sugInit($("dn"),$("dnb"),$("dnl"),dnItems);
 $("pf").onclick=e=>{const b=e.target.closest("button");if(!b)return;payF=b.dataset.pf;render()};
+$("td").onclick=()=>{const t=new Date();if(view==="y")cur=new Date(t.getFullYear(),cur.getMonth(),1);else{const k=pk(ds(t.getFullYear(),t.getMonth(),t.getDate())).split("-");cur=new Date(+k[0],+k[1]-1,1)}render()};
 $("vw").onclick=e=>{const b=e.target.closest("button");if(!b)return;view=b.dataset.v;render()};
 $("sdy").innerHTML=Array.from({length:28},(_,i)=>`<option value="${i+1}">${i+1}日</option>`).join("");
 let armR=false;
