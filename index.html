@@ -57,7 +57,7 @@ input,select{background:var(--bg);border:1px solid var(--bd);border-radius:8px;p
 .nav>button{padding:4px 9px}#ymw{min-width:0;display:flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap}#ymw select{padding:3px 4px}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
 .row,[data-day]{scroll-margin-top:70px}
-.sgl{max-height:170px;overflow-y:auto;border:1px solid var(--bd);border-radius:8px;margin:2px 0 8px;background:var(--sf)}.hl{background:var(--ac2);border-radius:6px}
+.sgl{max-height:170px;overflow-y:auto;border:1px solid var(--bd);border-radius:8px;margin:2px 0 8px;background:var(--sf)}.hl{background:var(--ac2);border-radius:6px;box-shadow:0 0 0 2px var(--ac)}
 .yt{border-collapse:collapse;font-size:14px;white-space:nowrap;min-width:100%}
 .yt .sr th,.yt .sr td{font-size:13px;color:var(--mu);font-weight:400}
 .yt th,.yt td{padding:5px 8px;border-bottom:1px solid var(--bd);text-align:right}
@@ -168,10 +168,14 @@ input[type=date]::-webkit-date-and-time-value,input[type=month]::-webkit-date-an
 
 <div class="mo" id="mi"><div class="mb">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><b>カード明細の取り込み</b><button id="ic2">閉じる</button></div>
-<p class="mu">カードの利用明細(日付・利用店・支払区分・金額の行)を貼り付けてください。日付はレシートとの照合だけに使い、家計簿には引落月で入ります。銀行アプリの入出金の画面をコピーした文字(名前・日付・金額が別々の行に並ぶ形式)も読み込めます。その場合、マイナスは出金(支出)、プラスは入金(収入)として入り、引落月の欄の月にまとめて入ります。月をまたぐ明細は、下のチェックで日付から月を決められます。引落名を空にすると「口座入出金」になります。すでに取り込んだ同じ記録は、集計する月だけ更新します。貼り付けの中に同じ日・同じ店・同じ金額の行が複数あるときは、1件ずつ別の記録として取り込みます。すでに家計簿にある記録と同じ場合は、取り込まずに引落月と引落名だけ更新します(下のチェックで、別の記録として取り込むこともできます)。</p>
+<p class="mu" style="margin:0 0 6px">カードの利用明細、または銀行アプリの入出金の画面の文字を貼り付けてください。写真から文字をコピーすることもできます。</p>
+<details style="margin-bottom:8px"><summary class="mu" style="cursor:pointer">くわしい説明</summary><p class="mu" style="margin:6px 0 0;font-size:13px">カードの利用明細(日付・利用店・支払区分・金額の行)を貼り付けてください。日付はレシートとの照合だけに使い、家計簿には引落月で入ります。銀行アプリの入出金の画面をコピーした文字(名前・日付・金額が別々の行に並ぶ形式)も読み込めます。その場合、マイナスは出金(支出)、プラスは入金(収入)として入り、引落月の欄の月にまとめて入ります。月をまたぐ明細は、下のチェックで日付から月を決められます。引落名を空にすると「口座入出金」になります。すでに取り込んだ同じ記録は、集計する月だけ更新します。貼り付けの中に同じ日・同じ店・同じ金額の行が複数あるときは、1件ずつ別の記録として取り込みます。すでに家計簿にある記録と同じ場合は、取り込まずに引落月と引落名だけ更新します(下のチェックで、別の記録として取り込むこともできます)。</p></details>
 <div style="display:flex;gap:6px;margin-bottom:8px"><div style="flex:0 0 120px"><span class="mu" style="font-size:12px">引落月</span><input type="month" id="idm" style="padding:4px 6px;font-size:14px"></div><div style="flex:1;min-width:0"><span class="mu" style="font-size:12px">引落名(任意)</span><div style="display:flex;gap:4px"><input id="idn" autocomplete="off" placeholder="例: 楽天カード6月分" style="padding:4px 6px;font-size:14px"><button id="idb" type="button" style="padding:2px 8px">▾</button></div></div></div>
 <div id="idl" class="sgl" style="display:none"></div>
-<textarea id="itx" rows="8" style="width:100%;background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:8px;font:inherit"></textarea>
+<button id="ipc" type="button" style="width:100%;margin-bottom:6px">🖼 保存した写真を選んで表示</button>
+<div id="ipw" style="display:none;margin-bottom:6px"><img id="ipi" alt="" style="width:100%;border-radius:8px;border:1px solid var(--bd);-webkit-user-select:auto;user-select:auto"><div class="mu" style="font-size:12px;margin:4px 0">写真の文字を長押しして、なぞって選び →「コピー」。そのあと下の欄に貼り付けます</div><button id="ipx" type="button" style="width:100%">写真を閉じる</button></div>
+<input type="file" id="ipf" accept="image/*" hidden>
+<textarea id="itx" rows="5" placeholder="ここに貼り付け" style="width:100%;background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:8px;font:inherit;font-size:16px"></textarea>
 <label style="display:block;font-size:13px;margin:6px 0 0"><input type="checkbox" id="ifc" style="width:auto;margin-right:4px">すでにある同じ日・店・金額の記録があっても、別の記録として取り込む</label>
 <label style="display:block;font-size:13px;margin:6px 0 0"><input type="checkbox" id="ibd" style="width:auto;margin-right:4px">銀行の入出金のとき: 引落月の欄ではなく、日付から月を決める</label>
 <div id="ip" class="mu" style="margin:8px 0"></div>
@@ -343,7 +347,7 @@ function isRed(d){const dt=new Date(d+"T00:00:00");return dt.getDay()===0||holSe
 function dayLabelFull(d){return (+d.slice(5,7))+"月"+(+d.slice(8))+"日("+"日月火水木金土"[new Date(d+"T00:00:00").getDay()]+")"}
 function dayLabel(d){return (+d.slice(8))+"日("+"日月火水木金土"[new Date(d+"T00:00:00").getDay()]+")"}
 function sq(k,n){if(k==="i")return `<i class="sq" style="background:#9a9a94"></i>`;const l=CL.find(x=>x.n===n),ci=l?l.ci:CL.length;return `<i class="sq" style="background:${PAL[ci%PAL.length]}"></i>`}
-let dkL=[],dopen=new Set(),foldDn=new Set(),foldDay=new Set();
+let dkL=[],dopen=new Set(),foldDn=new Set(),foldDay=new Set(),hlKeep=null;
 $("ysel").onchange=()=>{cur=new Date(+$("ysel").value,cur.getMonth(),1);render()};
 $("msel").onchange=()=>{cur=new Date(cur.getFullYear(),+$("msel").value,1);render()};
 function dkId(kind,k,sb){dkL.push([kind,k,sb]);return dkL.length-1}
@@ -488,7 +492,7 @@ function render(){
     const k=g.dn||"";if(gi&&(gr[gi-1].dn||"")===k)return"";const sub=gr.filter(x=>(x.dn||"")===k);
     const ex=sub.filter(x=>x.type!=="inc"),inc=sub.filter(x=>x.type==="inc"),sx=ex.reduce((a,x)=>a+x.t,0),sy=ex.filter(x=>inAll(x.e)).reduce((a,x)=>a+x.t,0),si=inc.reduce((a,x)=>a+x.t,0);
     return `<div class="fh" data-fold="${esc(k)}" style="${hb};display:grid;grid-template-columns:auto 1fr;align-items:center;column-gap:8px;row-gap:3px"><span>${foldDn.has(k)?"▸ ":"▾ "}${esc(k||"引落名なし")}<span class="mu" style="font-weight:400"> ${sub.length}件</span></span><span style="text-align:right">${ex.length?"合計 "+yen(sx):""}${ex.length&&inc.length?" ・ ":""}${inc.length?"収入 "+sgn(si):""}</span><span><button class="d" data-bulk="${esc(k)}" style="padding:1px 8px;font-size:12px;font-weight:400">一括削除</button></span><span class="mu" style="font-weight:400;font-size:12px;text-align:right">${ex.length?`含める ${yen(sy)} ・ 含めない ${yen(sx-sy)}`:""}</span></div>`};
-  $("list").innerHTML=gr.length?'<div style="text-align:right;margin-bottom:4px"><button data-foldall="1" style="padding:2px 10px;font-size:12px">すべて折りたたむ</button> <button data-foldall="0" style="padding:2px 10px;font-size:12px">すべて開く</button></div>'+gr.map((g,gi)=>hd(g,gi)+((mode==="db"?foldDn.has(g.dn||""):foldDay.has(g.date))?"":`<div class="row" data-g="${g.ids.join(",")}" style="cursor:pointer"><span>${mode==="db"?`<span class="mu">${+g.date.slice(5,7)}/${+g.date.slice(8)} </span>`:""}<b>${esc(g.store||(g.type==="inc"?(g.dn||(mode==="db"?"収入":"入金")):(g.dn||"支出")))}</b>${mode!=="db"&&g.dn&&g.store?`<span class="mu"> ・ ${esc(g.dn)}</span>`:""}<br><span class="mu">${Object.keys(g.cat).map(c=>sq(g.type==="inc"?"i":"c",c)+esc(c)+(g.type==="inc"?"":" "+yen(g.cat[c]))).join(" ・ ")}</span>${mode==="db"?matchHtml(g.e):mode==="rc"?matchRHtml(g):""}</span><span style="text-align:right;white-space:nowrap"><b style="color:${g.type==="inc"?"var(--ac)":"inherit"}">${g.type==="inc"?sgn(g.t):yen(g.t)}</b>${g.type==="inc"?"":`<br><span class="mu" style="font-size:12px">${g.n}品目 ・ ${payLabel(g.pay)}</span>`}</span></div>`)).join(""):'<span class="mu">記録なし</span>';
+  $("list").innerHTML=gr.length?'<div style="text-align:right;margin-bottom:4px"><button data-foldall="1" style="padding:2px 10px;font-size:12px">すべて折りたたむ</button> <button data-foldall="0" style="padding:2px 10px;font-size:12px">すべて開く</button></div>'+gr.map((g,gi)=>hd(g,gi)+((mode==="db"?foldDn.has(g.dn||""):foldDay.has(g.date))?"":`<div class="row${hlKeep&&g.ids.includes(hlKeep)?" hl":""}" data-g="${g.ids.join(",")}" style="cursor:pointer"><span>${mode==="db"?`<span class="mu">${+g.date.slice(5,7)}/${+g.date.slice(8)} </span>`:""}<b>${esc(g.store||(g.type==="inc"?(g.dn||(mode==="db"?"収入":"入金")):(g.dn||"支出")))}</b>${mode!=="db"&&g.dn&&g.store?`<span class="mu"> ・ ${esc(g.dn)}</span>`:""}<br><span class="mu">${Object.keys(g.cat).map(c=>sq(g.type==="inc"?"i":"c",c)+esc(c)+(g.type==="inc"?"":" "+yen(g.cat[c]))).join(" ・ ")}</span>${mode==="db"?matchHtml(g.e):mode==="rc"?matchRHtml(g):""}</span><span style="text-align:right;white-space:nowrap"><b style="color:${g.type==="inc"?"var(--ac)":"inherit"}">${g.type==="inc"?sgn(g.t):yen(g.t)}</b>${g.type==="inc"?"":`<br><span class="mu" style="font-size:12px">${g.n}品目 ・ ${payLabel(g.pay)}</span>`}</span></div>`)).join(""):'<span class="mu">記録なし</span>';
 }
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
 $("pv").onclick=()=>{cur=view==="y"?new Date(cur.getFullYear()-1,cur.getMonth(),1):new Date(cur.getFullYear(),cur.getMonth()-1,1);render()};
@@ -621,8 +625,13 @@ $("list").onchange=e=>{const id=e.target.dataset.mg;if(!id)return;const d=S.debi
 const tabState={};
 function saveTabPos(){tabState[mode]={cur:new Date(cur.getTime()),view,payF,selDay,y:window.scrollY||document.documentElement.scrollTop||0}}
 $("tabs").onclick=e=>{const b=e.target.closest("button");if(!b)return;const nm=b.dataset.m;if(nm!==mode){saveTabPos();mode=nm;impMsg="";const ts=tabState[mode];if(ts){cur=new Date(ts.cur.getTime());view=ts.view;payF=ts.payF;selDay=ts.selDay}render();const y=ts?ts.y:0;window.scrollTo(0,y);requestAnimationFrame(()=>window.scrollTo(0,y))}else{impMsg="";render()}};
-$("imp").onclick=()=>{$("ifc").checked=false;$("ibd").checked=false;$("idl").style.display="none";$("idm").value=cur.getFullYear()+"-"+pad(cur.getMonth()+1);$("idn").value="";$("itx").value="";$("ip").textContent="";$("mi").classList.add("on")};
-$("ic2").onclick=()=>$("mi").classList.remove("on");
+let ipUrl=null;
+function ipClose(){if(ipUrl){URL.revokeObjectURL(ipUrl);ipUrl=null}$("ipi").removeAttribute("src");$("ipw").style.display="none"}
+$("ipc").onclick=()=>{$("ipf").value="";$("ipf").click()};
+$("ipf").onchange=e=>{const f=e.target.files[0];if(!f)return;if(ipUrl)URL.revokeObjectURL(ipUrl);ipUrl=URL.createObjectURL(f);$("ipi").src=ipUrl;$("ipw").style.display=""};
+$("ipx").onclick=ipClose;
+$("imp").onclick=()=>{ipClose();$("ifc").checked=false;$("ibd").checked=false;$("idl").style.display="none";$("idm").value=cur.getFullYear()+"-"+pad(cur.getMonth()+1);$("idn").value="";$("itx").value="";$("ip").textContent="";$("mi").classList.add("on")};
+$("ic2").onclick=()=>{ipClose();$("mi").classList.remove("on")};
 function cardPlan(r){const used=new Set(),fc=$("ifc").checked;return r.map(x=>{const ex=fc?null:S.debits.find(d=>!used.has(d.id)&&d.date===x.date&&d.store===x.name&&(r.bank?(d.type==="inc"?1:-1)*tot0(d)===x.p:tot0(d)===x.p));if(ex)used.add(ex.id);return{x,ex}})}
 function bankHist(){const m=new Map();S.debits.slice().sort((a,b)=>a.date<b.date?-1:1).forEach(d=>{const i=d.items[0];if(i&&d.store&&(d.type==="inc"?IL:CL).some(c=>c.n===i.c)&&(d.type!=="inc"||incFlag(i.c)))m.set((d.type==="inc"?"i|":"e|")+d.store,{c:i.c,s:i.s||""})});return m}
 function ipDraw(){const r=parseAny($("itx").value);if(!r.length){$("ip").textContent="読み取れた行はありません";return}const nu=cardPlan(r).filter(q=>q.ex).length;if(r.bank){const o=r.filter(x=>x.p<0),n=r.filter(x=>x.p>0);$("ip").textContent="口座の入出金として "+r.length+"件(出金 "+o.length+"件 "+yen(o.reduce((a,x)=>a-x.p,0))+" ・ 入金 "+n.length+"件 +"+yen(n.reduce((a,x)=>a+x.p,0))+")"+(nu?"・うち"+nu+"件は取り込み済み("+($("ibd").checked?"飛ばします":"集計月だけ更新します")+")":"")+(r.warn?"。"+r.warn:"");const bd=$("ibd").checked,bv=$("idm").value;if(bd){const c={};r.forEach(x=>{const k=+pk(x.date).slice(5)+"月";c[k]=(c[k]||0)+1});$("ip").textContent+="。集計月: "+Object.keys(c).map(k=>k+c[k]+"件").join("・")}else $("ip").textContent+="。すべて"+(bv?+bv.slice(5)+"月":"(引落月を選んでください)")+"に入れます";return}$("ip").textContent=r.length+"件・合計 "+yen(r.reduce((a,x)=>a+x.p,0))+(nu?"・うち"+nu+"件は取り込み済み(更新のみ)":"")}
@@ -685,9 +694,11 @@ $("txg").onclick=()=>{const r=parseRcText($("txa").value),nt=$("nt");nt.style.di
   if(r.total!=null)msg+=sum===r.total?"合計がレシートの合計("+yen(r.total)+")と一致しました。":"品目の合計("+yen(sum)+")がレシートの合計("+yen(r.total)+")と違います(税の行や読み落としの可能性)。";
   if(r.date&&r.date!==selDay)msg+=" レシートの日付は "+r.date+" です(今は "+selDay+" に入力中)。";
   nt.textContent=msg;$("txa").value="";cpClose();drawRows()};
-function goEntry(v){const i=v.indexOf(":"),l=v.slice(0,i),id=v.slice(i+1);saveTabPos();mode=l==="d"?"db":"rc";view="m";impMsg="";{const en=(l==="d"?S.debits:S.entries).find(x=>x.id===id);if(en){if(l==="d")foldDn.delete(en.dname||"");foldDay.delete(en.date);const kk=(l==="d"?bmOf(en):pk(en.date)).split("-");cur=new Date(+kk[0],+kk[1]-1,1)}}render();
+function todayCur(){const t0=new Date(),k=pk(ds(t0.getFullYear(),t0.getMonth(),t0.getDate())).split("-");cur=new Date(+k[0],+k[1]-1,1)}
+function goEntry(v){const i=v.indexOf(":"),l=v.slice(0,i),id=v.slice(i+1);saveTabPos();mode=l==="d"?"db":"rc";view="m";impMsg="";{const en=(l==="d"?S.debits:S.entries).find(x=>x.id===id);if(en){if(l==="d")foldDn.delete(en.dname||"");foldDay.delete(en.date);hlKeep=id;if(l!=="d"&&payF!=="all"&&(en.pay||"cash")!==payF)payF="all";const kk=(l==="d"?bmOf(en):pk(en.date)).split("-");cur=new Date(+kk[0],+kk[1]-1,1)}}render();
   const el=Array.from($("list").querySelectorAll("[data-g]")).find(r=>r.dataset.g.split(",").includes(id));
-  if(el){el.classList.add("hl");el.scrollIntoView({block:"center",behavior:"smooth"});setTimeout(()=>el.classList.remove("hl"),3500)}else window.scrollTo(0,0)}
+  if(el){el.classList.add("hl");el.scrollIntoView({block:"center",behavior:"smooth"});setTimeout(()=>{const e2=Array.from($("list").querySelectorAll("[data-g]")).find(r=>r.dataset.g.split(",").includes(id));if(e2)e2.scrollIntoView({block:"center"})},500)}else window.scrollTo(0,0)}
+document.addEventListener("click",()=>{if(hlKeep){hlKeep=null;document.querySelectorAll("#list .hl").forEach(e=>e.classList.remove("hl"))}},true);
 function dkClick(e){const g=e.target.closest("[data-go]");if(g){goEntry(g.dataset.go);return}
   const r=e.target.closest("[data-dk]");if(!r)return;const t=dkL[+r.dataset.dk];if(!t)return;const key=JSON.stringify(t);if(dopen.has(key))dopen.delete(key);else dopen.add(key);render()}
 $("sum").onclick=dkClick;$("isum").onclick=dkClick;$("spsum").onclick=dkClick;
@@ -794,6 +805,7 @@ $("imr").onclick=()=>{const D=parseBk();if(!D)return;
   if(!armR){armR=true;$("imr").textContent="本当に置き換える";$("imm2").textContent="いまのデータは消えます。もう一度押すと置き換えます";return}
   S={opening:D.opening||0,entries:D.entries,debits:D.debits};["cats","icats","startDay","icv","bal","hideSp"].forEach(q=>{if(D[q]!=null)S[q]=D[q]});
   armR=false;$("imr").textContent="置き換えて読み込む";save();render();$("imm2").textContent="置き換えました(レシート"+S.entries.length+"件、口座"+S.debits.length+"件)"};
+todayCur();
 render();
 </script>
 </body>
