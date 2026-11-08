@@ -105,9 +105,9 @@ input[type=date]::-webkit-date-and-time-value,input[type=month]::-webkit-date-an
 .bg2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:6px 0}
 .bg2 button{width:100%;margin:0;padding:6px 4px;font-size:15px;white-space:nowrap;min-height:40px}
 .gs{font-weight:700;font-size:16px;margin:2px 0 6px}
-.nwi{width:92px;min-width:92px;text-align:right;padding:6px 6px 6px 6px;font-size:16px;border:1px solid transparent;border-radius:6px;background:transparent;color:var(--tx)}
+.nwi{width:92px;min-width:92px;text-align:right;padding:3px 6px;height:26px;line-height:1.2;font-size:16px;transform:scale(.875);transform-origin:right center;border:1px solid transparent;border-radius:6px;background:transparent;color:var(--tx)}
 .nwi:focus{border-color:var(--ac);background:var(--bg);outline:0}
-.yt td.ni{padding:2px 2px}
+.yt td.ni{padding:1px 2px}
 .nwp{color:var(--ac)}.nwn{color:var(--rd)}
 .yt .nwl{cursor:pointer}
 .nwadd{padding:0 8px;min-height:28px;margin-left:6px}
@@ -116,8 +116,8 @@ input[type=date]::-webkit-date-and-time-value,input[type=month]::-webkit-date-an
 .nwt .ts th,.nwt .ts td{background:var(--sc);color:#fff;border-bottom:0}
 .nwt thead th{position:static}
 .nwt thead th:first-child{position:sticky;left:0}
-.yt td.nwp{color:var(--ac);font-weight:700}
-.yt td.nwn{color:var(--rd);font-weight:700}
+.yt td.nwp{color:var(--ac)}
+.yt td.nwn{color:var(--rd)}
 </style>
 </head>
 <body>
@@ -232,8 +232,8 @@ input[type=date]::-webkit-date-and-time-value,input[type=month]::-webkit-date-an
 <div class="mo" id="mn"><div class="mb" style="max-width:none;padding:10px">
 <div style="display:flex;justify-content:space-between;align-items:center;gap:6px;margin-bottom:6px"><b style="font-size:17px">純資産</b><span style="display:flex;gap:4px;align-items:center"><button id="nwpv" type="button">◀</button><b id="nwy" style="min-width:56px;text-align:center"></b><button id="nwnx" type="button">▶</button></span><button id="nwc" type="button">閉じる</button></div>
 <div class="mu" id="nwh" style="font-size:12px;margin-bottom:6px"></div>
-<div style="display:flex;gap:8px;align-items:center;margin-bottom:6px"><button id="nwx" type="button">Excelに出力</button><span class="mu" id="nwm" style="font-size:12px"></span></div>
-<div id="nwt" style="overflow:auto;max-height:calc(100vh - 200px)"></div>
+<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:6px"><button id="nwx" type="button">Excelに出力</button><label class="mu" style="display:flex;align-items:center;gap:6px;font-size:13px">表示する月<select id="nwmj" style="width:auto"></select></label><span class="mu" id="nwm" style="font-size:12px"></span></div>
+<div id="nwt" style="overflow-x:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain"></div>
 </div></div>
 <div class="mo" id="mna"><div class="mb">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><b id="nat">口座を追加</b><button id="nac" type="button">閉じる</button></div>
@@ -882,10 +882,15 @@ function nwBuild(){
 function nwDraw(){const box=$("nwt"),sl=box.scrollLeft,st=box.scrollTop;$("nwy").textContent=nwY+"年";
   $("nwh").textContent="最新月−年初と年初比は、前の年("+(nwY-1)+"年)の12月の残高との差です。前の年に切り替えて、12月の欄に入力します。数字の欄を押して入力、口座名を押すと編集できます。";
   box.innerHTML=nwBuild();nwRefresh();box.scrollLeft=sl;box.scrollTop=st}
-function nwOpen(){nwY=cur.getFullYear();$("nwm").textContent="";nwDraw();$("mn").classList.add("on")}
+function nwGoMonth(m,smooth){const box=$("nwt"),th=box.querySelector("table thead tr:nth-child(2) th:nth-child("+(m+1)+")");if(!th)return;box.scrollLeft=0;const d=th.getBoundingClientRect().right-box.getBoundingClientRect().right+1;box.scrollTo({left:Math.max(0,d),behavior:smooth?"smooth":"auto"})}
+function nwTarget(){let last=0;nwD().acc.forEach(a=>{const v=nwVals(a,nwY);for(let i=12;i>=1;i--)if(v[i]!==null){last=Math.max(last,i);break}});const now=new Date();return nwY===now.getFullYear()?Math.max(last,now.getMonth()+1):(last||1)}
+function nwShow(){nwDraw();const m=nwTarget();$("nwmj").value=m;nwGoMonth(m,false)}
+$("nwmj").innerHTML=Array.from({length:12},(_,i)=>`<option value="${i+1}">${i+1}月</option>`).join("");
+$("nwmj").onchange=()=>nwGoMonth(+$("nwmj").value,true);
+function nwOpen(){nwY=cur.getFullYear();$("nwm").textContent="";$("mn").classList.add("on");nwShow()}
 $("nwb").onclick=nwOpen;
 $("nwc").onclick=()=>$("mn").classList.remove("on");
-$("nwpv").onclick=()=>{nwY--;nwDraw()};$("nwnx").onclick=()=>{nwY++;nwDraw()};
+$("nwpv").onclick=()=>{nwY--;nwShow()};$("nwnx").onclick=()=>{nwY++;nwShow()};
 $("nwt").onclick=e=>{const ad=e.target.closest("[data-add]");if(ad){nwEdit(null,ad.dataset.add);return}const ed=e.target.closest("[data-ed]");if(ed)nwEdit(ed.dataset.ed)};
 $("nwt").addEventListener("focusin",e=>{if(e.target.classList&&e.target.classList.contains("nwi")){const q=e.target;setTimeout(()=>{try{q.select()}catch(x){}},0)}});
 $("nwt").addEventListener("change",e=>{const t=e.target;if(!t.classList||!t.classList.contains("nwi"))return;
