@@ -153,7 +153,7 @@ input[type=date]::-webkit-date-and-time-value,input[type=month]::-webkit-date-an
 <div class="seg" id="tp"><button data-t="exp" class="on">支出</button><button data-t="inc">入金</button></div>
 <div id="rc">
 <div id="txw" style="margin-bottom:6px"><div style="display:flex;gap:6px;align-items:stretch"><button id="cpc" type="button" style="flex:0 0 84px;padding:4px 6px;font-size:13px;line-height:1.3;white-space:normal">📷 撮影<br>して表示</button><textarea id="txa" rows="2" placeholder="文字を貼り付け" style="flex:1;min-width:0;background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:6px 8px;font-size:16px"></textarea><button class="p" id="txg" type="button" style="flex:0 0 auto;padding:4px 10px;font-size:14px">反映する</button></div>
-<div id="cpw" style="display:none;margin-top:6px"><img id="cpi" alt="" style="width:100%;max-height:55vh;object-fit:contain;border-radius:8px;border:1px solid var(--bd);-webkit-user-select:auto;user-select:auto"><div class="mu" style="font-size:12px;margin:4px 0">写真の文字を長押し →「すべてを選択」→「コピー」。そのあと上の欄に貼り付けて「反映する」を押します</div><button id="cpx" type="button" style="width:100%">写真を閉じる</button></div>
+<div id="cpw" style="display:none;margin-top:6px"><img id="cpi" alt="" style="width:100%;max-height:30vh;object-fit:contain;border-radius:8px;border:1px solid var(--bd);-webkit-user-select:auto;user-select:auto"><div class="mu" style="font-size:12px;margin:4px 0">写真を大きく表示しています。文字をコピーしたら、上の欄に貼り付けて「反映する」を押します</div><div style="display:flex;gap:8px"><button id="cpv" type="button" style="flex:1">拡大して文字を選ぶ</button><button id="cpx" type="button" style="flex:1">写真を閉じる</button></div></div>
 <input type="file" id="cpf" accept="image/*" capture="environment" hidden></div>
 </div>
 <div class="note" id="nt"></div>
@@ -187,7 +187,7 @@ input[type=date]::-webkit-date-and-time-value,input[type=month]::-webkit-date-an
 <div style="display:flex;gap:6px;margin-bottom:8px"><div style="flex:0 0 120px"><span class="mu" style="font-size:12px">引落月</span><input type="month" id="idm" style="padding:4px 6px;font-size:14px"></div><div style="flex:1;min-width:0"><span class="mu" style="font-size:12px">引落名(任意)</span><div style="display:flex;gap:4px"><input id="idn" autocomplete="off" placeholder="例: 楽天カード6月分" style="padding:4px 6px;font-size:14px"><button id="idb" type="button" style="padding:2px 8px">▾</button></div></div></div>
 <div id="idl" class="sgl" style="display:none"></div>
 <button id="ipc" type="button" style="width:100%;margin-bottom:6px">🖼 保存した写真を選んで表示</button>
-<div id="ipw" style="display:none;margin-bottom:6px"><img id="ipi" alt="" style="width:100%;border-radius:8px;border:1px solid var(--bd);-webkit-user-select:auto;user-select:auto"><div class="mu" style="font-size:12px;margin:4px 0">写真の文字を長押しして、なぞって選び →「コピー」。そのあと下の欄に貼り付けます</div><button id="ipx" type="button" style="width:100%">写真を閉じる</button></div>
+<div id="ipw" style="display:none;margin-bottom:6px"><img id="ipi" alt="" style="width:100%;max-height:30vh;object-fit:contain;border-radius:8px;border:1px solid var(--bd);-webkit-user-select:auto;user-select:auto"><div class="mu" style="font-size:12px;margin:4px 0">写真を大きく表示しています。文字をコピーしたら、下の欄に貼り付けます</div><div style="display:flex;gap:8px"><button id="ipv" type="button" style="flex:1">拡大して文字を選ぶ</button><button id="ipx" type="button" style="flex:1">写真を閉じる</button></div></div>
 <input type="file" id="ipf" accept="image/*" hidden>
 <textarea id="itx" rows="5" placeholder="ここに貼り付け" style="width:100%;background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:8px;font:inherit;font-size:16px"></textarea>
 <label style="display:block;font-size:13px;margin:6px 0 0"><input type="checkbox" id="ifc" style="width:auto;margin-right:4px">すでにある同じ日・店・金額の記録があっても、別の記録として取り込む</label>
@@ -243,6 +243,10 @@ input[type=date]::-webkit-date-and-time-value,input[type=month]::-webkit-date-an
 <div class="mu" style="font-size:12px;margin:2px 0 8px">同じ小計名の口座を足した行を、その区分の合計の下に出します</div>
 <div style="display:flex;gap:8px;align-items:center"><button id="nau" type="button" style="display:none">▲</button><button id="nad" type="button" style="display:none">▼</button><button class="d" id="nax" type="button" style="display:none">削除</button><button class="p" id="nasv" type="button" style="flex:1">保存</button></div>
 </div></div>
+<div id="ivw" style="display:none;position:fixed;inset:0;z-index:40;background:#111;overflow:auto;-webkit-overflow-scrolling:touch">
+<div style="position:sticky;top:0;z-index:2;display:flex;gap:8px;align-items:center;padding:calc(8px + env(safe-area-inset-top,0px)) 10px 8px;background:rgba(0,0,0,.8);color:#fff"><button id="ivm" type="button" style="min-width:40px">−</button><span id="ivz" style="min-width:46px;text-align:center;font-size:14px"></span><button id="ivp" type="button" style="min-width:40px">＋</button><span style="flex:1;font-size:11px;line-height:1.3;opacity:.9">文字を長押し →「すべてを選択」→「コピー」。終わったら右の「閉じる」</span><button id="ivx" type="button" class="p">閉じる</button></div>
+<img id="ivi" alt="" style="display:block;width:150%;max-width:none;-webkit-user-select:auto;user-select:auto;-webkit-touch-callout:default">
+</div>
 <div id="undo" style="display:none"><span id="undoM"></span><button id="undoB" type="button">元に戻す</button></div>
 <script>
 let CATS=["食費","外食","日用品","交通","医療","趣味","光熱費","その他"],ICATS=["ATM引き出し","入金","給料","賞与","年金","副収入","その他収入"];
@@ -654,9 +658,10 @@ const tabState={};
 function saveTabPos(){tabState[mode]={cur:new Date(cur.getTime()),view,payF,selDay,y:window.scrollY||document.documentElement.scrollTop||0}}
 $("tabs").onclick=e=>{const b=e.target.closest("button");if(!b)return;const nm=b.dataset.m;if(nm!==mode){saveTabPos();mode=nm;impMsg="";const ts=tabState[mode];if(ts){cur=new Date(ts.cur.getTime());view=ts.view;payF=ts.payF;selDay=ts.selDay}render();const y=ts?ts.y:0;window.scrollTo(0,y);requestAnimationFrame(()=>window.scrollTo(0,y))}else{impMsg="";render()}};
 let ipUrl=null;
-function ipClose(){if(ipUrl){URL.revokeObjectURL(ipUrl);ipUrl=null}$("ipi").removeAttribute("src");$("ipw").style.display="none"}
+function ipClose(){if(ipUrl){URL.revokeObjectURL(ipUrl);ipUrl=null}$("ipi").removeAttribute("src");$("ipw").style.display="none";$("ivw").style.display="none"}
 $("ipc").onclick=()=>{$("ipf").value="";$("ipf").click()};
-$("ipf").onchange=e=>{const f=e.target.files[0];if(!f)return;if(ipUrl)URL.revokeObjectURL(ipUrl);ipUrl=URL.createObjectURL(f);$("ipi").src=ipUrl;$("ipw").style.display=""};
+$("ipf").onchange=async e=>{const f=e.target.files[0];if(!f)return;const u=await ivPrepare(f);if(ipUrl)URL.revokeObjectURL(ipUrl);ipUrl=u;$("ipi").src=u;$("ipw").style.display="";ivOpen(u)};
+$("ipv").onclick=()=>{if(ipUrl)ivOpen(ipUrl)};
 $("ipx").onclick=ipClose;
 $("imp").onclick=()=>{ipClose();$("ifc").checked=false;$("ibd").checked=false;$("idl").style.display="none";$("idm").value=cur.getFullYear()+"-"+pad(cur.getMonth()+1);$("idn").value="";$("itx").value="";$("ip").textContent="";$("mi").classList.add("on")};
 $("ic2").onclick=()=>{ipClose();$("mi").classList.remove("on")};
@@ -710,8 +715,18 @@ function parseRcText(raw){
 
 function histCat(){const m=new Map();S.entries.concat(S.debits).slice().sort((a,b)=>a.date<b.date?-1:1).forEach(e=>{if(e.type!=="exp")return;e.items.forEach(i=>{const n=(i.n||"").trim();if(n&&CATS.includes(i.c))m.set(n,{c:i.c,s:i.s||""})})});return m}
 let cpUrl=null;
-function cpClose(){if(cpUrl){URL.revokeObjectURL(cpUrl);cpUrl=null}$("cpi").removeAttribute("src");$("cpw").style.display="none"}
-function cpShow(f){if(!f)return;if(cpUrl)URL.revokeObjectURL(cpUrl);cpUrl=URL.createObjectURL(f);$("cpi").src=cpUrl;$("cpw").style.display=""}
+function cpClose(){if(cpUrl){URL.revokeObjectURL(cpUrl);cpUrl=null}$("cpi").removeAttribute("src");$("cpw").style.display="none";$("ivw").style.display="none"}
+const IVZ=[100,150,200,250,300,400,500];let ivZ=150;
+function ivSet(z){ivZ=z;$("ivi").style.width=z+"%";$("ivz").textContent=z+"%"}
+function ivOpen(u){$("ivi").src=u;ivSet(150);$("ivw").style.display="block";$("ivw").scrollTop=0;$("ivw").scrollLeft=0}
+$("ivx").onclick=()=>{$("ivw").style.display="none"};
+$("ivm").onclick=()=>{const k=IVZ.indexOf(ivZ);if(k>0)ivSet(IVZ[k-1])};$("ivp").onclick=()=>{const k=IVZ.indexOf(ivZ);if(k<IVZ.length-1)ivSet(IVZ[k+1])};
+async function ivPrepare(f){try{const bm=await createImageBitmap(f,{imageOrientation:"from-image"}),L=Math.max(bm.width,bm.height),s=L>2400?2400/L:1;
+    if(s===1){if(bm.close)bm.close();return URL.createObjectURL(f)}
+    const c=document.createElement("canvas");c.width=Math.round(bm.width*s);c.height=Math.round(bm.height*s);c.getContext("2d").drawImage(bm,0,0,c.width,c.height);if(bm.close)bm.close();
+    return await new Promise(r=>c.toBlob(b=>r(URL.createObjectURL(b||f)),"image/jpeg",.92))}catch(e){return URL.createObjectURL(f)}}
+async function cpShow(f){if(!f)return;const u=await ivPrepare(f);if(cpUrl)URL.revokeObjectURL(cpUrl);cpUrl=u;$("cpi").src=u;$("cpw").style.display="";ivOpen(u)}
+$("cpv").onclick=()=>{if(cpUrl)ivOpen(cpUrl)};
 $("cpc").onclick=()=>{$("cpf").value="";$("cpf").click()};
 $("cpf").onchange=e=>cpShow(e.target.files[0]);$("cpx").onclick=cpClose;
 $("txg").onclick=()=>{const r=parseRcText($("txa").value),nt=$("nt");nt.style.display="block";
