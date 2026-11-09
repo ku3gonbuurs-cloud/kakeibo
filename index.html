@@ -205,6 +205,7 @@ input[type=date]::-webkit-date-and-time-value,input[type=month]::-webkit-date-an
 <div class="grow" style="cursor:default"><span>月の開始日</span><span style="display:flex;gap:8px;align-items:center"><select id="sdy" style="width:84px"></select><button class="p" id="sdb" style="white-space:nowrap;padding:6px 12px">変更する</button></span></div>
 <p class="mu" style="margin:0;font-size:12px">例: 25日にすると、10/25〜11/24が「10月」になります。カレンダー、月の集計、年の合計、引落月が同じ区切りになります。</p>
 <div class="mu" id="sdm" style="margin-top:4px"></div>
+<div class="grow" style="cursor:default;margin-top:8px"><span>バージョン</span><span class="mu" id="ver"></span></div>
 </div>
 <div class="gc2">
 <div class="gt">データ</div>
@@ -851,6 +852,8 @@ $("imr").onclick=()=>{const D=parseBk();if(!D)return;
 
 /* ===== 純資産 ===== */
 const nwG={c:"預金・現金",i:"投資・積立"};
+const APP_VER="1.0.0",APP_DATE="2026-11-09";
+$("ver").textContent=APP_VER+"("+APP_DATE+")";
 let nwY=0,nwEditId=null,nwDelArm=false;
 function nwD(){if(!S.nw)S.nw={acc:[],v:{}};if(!S.nw.v)S.nw.v={};if(!S.nw.acc)S.nw.acc=[];return S.nw}
 const nwKey=(y,m)=>y+"-"+pad(m);
