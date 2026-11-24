@@ -87,10 +87,14 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 input[type=date],input[type=month]{-webkit-appearance:none;appearance:none;display:block;width:100%;min-width:0;max-width:100%;min-height:38px;line-height:1.2;text-align:left}
 input[type=date]::-webkit-date-and-time-value,input[type=month]::-webkit-date-and-time-value{text-align:left;min-width:0}
 .g2>div,#rdw,#ddw>*{min-width:0}
-#sp{display:flex;gap:8px}
-#sp>div:first-child{flex:1;min-width:0}
-#pmw{flex:0 0 96px}
+#sp{display:flex;gap:6px}
+#sp .sn{flex:1;min-width:0}
+#rdw,#ddd{flex:0 0 122px;min-width:0}
+#pmw{flex:0 0 74px;min-width:0}
 #pm{width:100%}
+#sp .mu{font-size:11px}
+#sp input,#sp select{font-size:14px;padding:6px 5px}
+#sp #shb{padding:2px 8px}
 #mft{position:sticky;bottom:calc(-8px - env(safe-area-inset-bottom,0px));z-index:5;background:var(--sf);margin:10px -10px -10px;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--bd);border-radius:0 0 14px 14px}
 #undo{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:60;max-width:520px;margin:0 auto;background:#222;color:#fff;border-radius:12px;padding:6px 8px 6px 14px;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 4px 16px rgba(0,0,0,.3)}
 #undo button{background:transparent;color:#8fe0b4;border:0;font-weight:700;padding:6px 10px}
@@ -155,9 +159,8 @@ input[type=date]::-webkit-date-and-time-value,input[type=month]::-webkit-date-an
 <input type="file" id="cpf" accept="image/*" capture="environment" hidden></div>
 </div>
 <div class="note" id="nt"></div>
-<div id="rdw" style="display:none;margin-bottom:8px"><span class="mu">日付</span><input type="date" id="rd"></div>
-<div id="ddw" style="display:none"><div class="g2"><div><span class="mu">利用日(照合用)</span><input type="date" id="dd"></div><div><span class="mu">引落月(集計する月)</span><input type="month" id="dm"></div></div><div style="margin-bottom:8px"><span class="mu">引落名</span><div style="display:flex;gap:4px"><input id="dn" autocomplete="off" placeholder="例: 楽天カード6月分"><button id="dnb" type="button" style="padding:2px 10px">▾</button></div><div id="dnl" class="sgl" style="display:none"></div></div></div>
-<div class="g2" id="sp"><div><span class="mu" id="sl">店名・メモ</span><div style="display:flex;gap:4px"><input id="sh" autocomplete="off" placeholder="入力 or ▾で履歴から"><button id="shb" type="button" style="padding:2px 10px">▾</button></div></div><div id="pmw"><span class="mu">支払方法</span><select id="pm"><option value="cash">現金</option><option value="other">カード</option><option value="etc">他</option></select></div></div>
+<div id="ddw" style="display:none"><div style="margin-bottom:8px"><span class="mu">引落月(集計する月)</span><input type="month" id="dm"></div><div style="margin-bottom:8px"><span class="mu">引落名</span><div style="display:flex;gap:4px"><input id="dn" autocomplete="off" placeholder="例: 楽天カード6月分"><button id="dnb" type="button" style="padding:2px 10px">▾</button></div><div id="dnl" class="sgl" style="display:none"></div></div></div>
+<div class="g2" id="sp"><div id="rdw" style="display:none"><span class="mu">日付</span><input type="date" id="rd"></div><div id="ddd" style="display:none"><span class="mu">利用日</span><input type="date" id="dd"></div><div class="sn"><span class="mu" id="sl">店名・メモ</span><div style="display:flex;gap:4px"><input id="sh" autocomplete="off" placeholder="入力か▾で履歴"><button id="shb" type="button" style="padding:2px 10px">▾</button></div></div><div id="pmw"><span class="mu">支払方法</span><select id="pm"><option value="cash">現金</option><option value="other">カード</option><option value="etc">他</option></select></div></div>
 <div id="pmh" class="mu" style="font-size:12px;margin:-4px 0 8px;display:none">カード・他は、現金の残高に影響しません</div>
 <div id="shl" style="display:none;max-height:190px;overflow-y:auto;border:1px solid var(--bd);border-radius:8px;margin:-4px 0 8px;background:var(--sf)"></div>
 <div id="ith" class="mu"></div>
@@ -548,7 +551,7 @@ $("tp").onclick=e=>{const b=e.target.closest("button");if(b)setType(b.dataset.t)
 let modalY=null;
 function backScroll(){if(modalY==null)return;const y=modalY,go=()=>window.scrollTo(0,y);try{if(document.activeElement&&document.activeElement.blur)document.activeElement.blur()}catch(e){}go();requestAnimationFrame(go);setTimeout(go,150);setTimeout(go,400)}
 function openDay(k){modalY=window.scrollY||document.documentElement.scrollTop||0;rowOrd=false;selDay=k;editId=null;hlIds=[];xArm=-1;delArm=null;rows=[{n:"",p:"",c:c0()}];$("sh").value="";$("pm").value="cash";$("nt").style.display="none";
-  $("mt").textContent=k.replace(/-0?/g,(m,i)=>i===4?"年":"月")+"日";setType("exp");drawDay();$("ddw").style.display=mode==="db"?"":"none";$("rdw").style.display=mode==="rc"?"":"none";$("rd").value=k;$("dd").value=k;$("dn").value="";$("dm").value=pk(k);$("dm").dataset.auto="1";$("txa").value="";cpClose();$("dl").style.display=mode==="db"?"none":"";$("dx").style.display="none";dxArm=false;$("dx").textContent="削除";if(mode==="db")$("mt").textContent="口座の入力";$("shl").style.display="none";$("dnl").style.display="none";$("mo").classList.add("on")}
+  $("mt").textContent=k.replace(/-0?/g,(m,i)=>i===4?"年":"月")+"日";setType("exp");drawDay();$("ddw").style.display=mode==="db"?"":"none";$("rdw").style.display=mode==="rc"?"":"none";$("ddd").style.display=mode==="db"?"":"none";$("rd").value=k;$("dd").value=k;$("dn").value="";$("dm").value=pk(k);$("dm").dataset.auto="1";$("txa").value="";cpClose();$("dl").style.display=mode==="db"?"none":"";$("dx").style.display="none";dxArm=false;$("dx").textContent="削除";if(mode==="db")$("mt").textContent="口座の入力";$("shl").style.display="none";$("dnl").style.display="none";$("mo").classList.add("on")}
 let hlIds=[];
 function drawDay(){const es=E().filter(e=>e.date===selDay);
   $("dl").innerHTML=es.map(e=>{const on=editId===e.id,hl=on||hlIds.includes(e.id),t=e.items.reduce((a,i)=>a+i.p,0),
@@ -858,7 +861,7 @@ $("imr").onclick=()=>{const D=parseBk();if(!D)return;
 
 /* ===== 純資産 ===== */
 const nwG={c:"預金・現金",i:"投資・積立"};
-const APP_VER="1.0.1",APP_DATE="2026-11-13";
+const APP_VER="1.0.2",APP_DATE="2026-11-13";
 $("ver").textContent=APP_VER+"("+APP_DATE+")";
 let nwY=0,nwEditId=null,nwDelArm=false;
 function nwD(){if(!S.nw)S.nw={acc:[],v:{}};if(!S.nw.v)S.nw.v={};if(!S.nw.acc)S.nw.acc=[];return S.nw}
